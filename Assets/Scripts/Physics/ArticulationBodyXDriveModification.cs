@@ -1,4 +1,7 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
+using System.Text.RegularExpressions;
+
 [RequireComponent(typeof(ArticulationBody))]
 public class ArticulationBodyXDriveModification : MonoBehaviour
 {
@@ -7,6 +10,11 @@ public class ArticulationBodyXDriveModification : MonoBehaviour
     [Space(10)]
     public KeyCode decreaseValueButton;
     public KeyCode increaseValueButton;
+
+    //Input System
+    private PlayerInput playerInput;
+    private InputController.RobotArmActions armAction;
+    private float inputValue;
 
     private ArticulationBody articulationBody;
     private ArticulationDrive xDrive;
@@ -22,21 +30,26 @@ public class ArticulationBodyXDriveModification : MonoBehaviour
         fixedSpeed = speed * Time.fixedDeltaTime;
         inRadians = articulationBody.jointType != ArticulationJointType.PrismaticJoint;
         angleModifier = inRadians ? Mathf.Rad2Deg : 1f;
+
+        //Input system initialization
+        armAction = (new InputController()).RobotArm;
+        armAction.Enable();
+        armAction.MoveJoint.AddCompositeBinding("Axis")
+            .With("Positive", string.Format("<Keyboard>/{0}", increaseValueButton))
+            .With("Negative", string.Format("<Keyboard>/{0}", decreaseValueButton))
+            .With("MaxValue", "1")
+            .With("MinVlaue", "-1");
     }
 
-    private void FixedUpdate()
-    {
-        if (independent && rotationAllowed)
+    private void Update() {
+        if (independent && rotationAllowed) 
         {
-            if (Input.GetKey(decreaseValueButton))
-            {
-                OnDecreaseAction();
-            }
+            inputValue = armAction.MoveJoint.ReadValue<float>();
 
-            if (Input.GetKey(increaseValueButton))
-            {
+            if (inputValue > 0)
                 OnIncreaseAction();
-            }
+            if (inputValue < 0)
+                OnDecreaseAction();
         }
     }
 
@@ -50,13 +63,11 @@ public class ArticulationBodyXDriveModification : MonoBehaviour
         IncreaseTarget();
     }
 
-    private void DecreaseTarget()
-    {
+    private void DecreaseTarget() {
         MoveTo(articulationBody.jointPosition[0] * angleModifier - fixedSpeed);
     }
 
-    private void IncreaseTarget()
-    {
+    private void IncreaseTarget() {
         MoveTo(articulationBody.jointPosition[0] * angleModifier + fixedSpeed);
     }
 

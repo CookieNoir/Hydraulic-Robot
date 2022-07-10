@@ -3,8 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Controllers;
 using Core;
-using UnityEngine;
 using View;
+using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -19,12 +21,37 @@ public class PauseMenuManager : MonoBehaviour
     public KeyCode PauseButton;
     public KeyCode BackButton;
 
-    
+    private InputController.UIActions uiAction;
+
     private void Awake()
     {
         PauseMenuView.PauseMenuManager = this;
         SelectLevelMenuMenuView.PauseMenuManager = this;
         RestartMenuView.PauseMenuManager = this;
+
+        //Input system initialization
+        uiAction = (new InputController()).UI;
+        uiAction.Enable();
+
+        uiAction.Cancel.performed += OnCancel;
+        uiAction.Back.performed += OnBack;
+    }
+
+    private void OnCancel(InputAction.CallbackContext ctx) 
+    {
+        if (_thisStackView.Count == 0) 
+        {
+            Pause();
+        }
+    }
+
+    private void OnBack(InputAction.CallbackContext ctx) 
+    {
+        Debug.Log("Back button pressed");
+        if (_thisStackView.Count != 0) 
+        {
+            Back();
+        }
     }
 
     //пауза
@@ -86,14 +113,14 @@ public class PauseMenuManager : MonoBehaviour
     }
     public void Update()
     {
-        if (Input.GetKeyDown(PauseButton) && _thisStackView.Count == 0) 
-        {
-            Pause();
-        }
+        // if (Input.GetKeyDown(PauseButton) && _thisStackView.Count == 0) 
+        // {
+        //     Pause();
+        // }
 
-        if (Input.GetKeyDown(BackButton) &&  _thisStackView.Count != 0)
-        {
-            Back();
-        }
+        // if (Input.GetKeyDown(BackButton) &&  _thisStackView.Count != 0)
+        // {
+        //     Back();
+        // }
     }
 }

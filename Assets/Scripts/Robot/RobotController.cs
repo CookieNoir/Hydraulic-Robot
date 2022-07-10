@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class RobotController : ArticulationBodyCenterOfMass
 {
-    [Space(10, order = 0), Header("Движение", order = 1)]
+    [Space(10, order = 0), Header("Р”РІРёР¶РµРЅРёРµ", order = 1)]
     public bool alwaysAllowRotations;
     [Space(10)]
     public NonPlayerCollisionCounter caterpillarLeftCollisionCounter;
@@ -16,14 +20,16 @@ public class RobotController : ArticulationBodyCenterOfMass
     public float criticalAngle = -95f;
     private bool legsTouchSurface;
     public ArticulationBodyMovement movement;
+    private InputController.RobotBaseActions baseAction;
+    private Vector2 inputValue;
     public bool MovementAllowed { get; private set; } = false;
     public bool RotationsAllowed { get; private set; } = false;
-    [Space(10, order = 0), Header("Навесное оборудование и перегруз", order = 1)]
+    [Space(10, order = 0), Header("РќР°РІРµСЃРЅРѕРµ РѕР±РѕСЂСѓРґРѕРІР°РЅРёРµ Рё РїРµСЂРµРіСЂСѓР·", order = 1)]
     public AccessoryJoinPoint accessoryJoinPoint;
-    [Space(10, order = 0), Header("Позиции камер", order = 1)]
+    [Space(10, order = 0), Header("РџРѕР·РёС†РёРё РєР°РјРµСЂ", order = 1)]
     public Transform regularCamerasContainer;
     public Transform specialCamerasContainer;
-    [Space(10, order = 0), Header("Состояния", order = 1)]
+    [Space(10, order = 0), Header("РЎРѕСЃС‚РѕСЏРЅРёСЏ", order = 1)]
     public RobotState defaultState;
     public float timeForSettingState = 2f;
     private List<Collider> childrenColliders;
@@ -35,25 +41,37 @@ public class RobotController : ArticulationBodyCenterOfMass
         base.Awake();
         childrenColliders = new List<Collider>(transform.GetComponentsInChildren<Collider>());
         setStateWithDelayCoroutine = SetStateWithDelayCoroutine(defaultState);
+        baseAction = (new InputController()).RobotBase;
+        baseAction.Enable();
     }
 
-    private void FixedUpdate()
-    {
-        if (stateIsSet)
-        {
-            legsTouchSurface = LegsTouchSurface();
-            RotationsAllowed = alwaysAllowRotations || (legsTouchSurface && accessoryJoinPoint.IsFree);
-            AllowRotations(articulationBodyRotations, RotationsAllowed);
-            MovementAllowed = accessoryJoinPoint.IsFree && (caterpillarLeftCollisionCounter.HasCollisions || caterpillarRightCollisionCounter.HasCollisions) && !legsTouchSurface;
-            if (MovementAllowed)
-            {
-                movement.Move(transform.forward, Input.GetAxis("Vertical") * accessoryJoinPoint.SpeedModifier,
-                    transform.up, Input.GetAxis("Horizontal") * accessoryJoinPoint.SpeedModifier);
+     private void Update()
+     {
+         if (stateIsSet)
+         {
+             legsTouchSurface = LegsTouchSurface();
+             RotationsAllowed = alwaysAllowRotations || (legsTouchSurface && accessoryJoinPoint.IsFree);
+             AllowRotations(articulationBodyRotations, RotationsAllowed);
+             MovementAllowed = accessoryJoinPoint.IsFree && (caterpillarLeftCollisionCounter.HasCollisions || caterpillarRightCollisionCounter.HasCollisions) && !legsTouchSurface;
+
+            inputValue = baseAction.Movement.ReadValue<Vector2>();
+
+            if (MovementAllowed) {
+                movement.Move(
+                    transform.forward,
+                    inputValue.y * accessoryJoinPoint.SpeedModifier,
+                    transform.up,
+                    inputValue.x * accessoryJoinPoint.SpeedModifier
+                );
             }
         }
+     }
+
+    public void MoveRobotArmL0(InputAction.CallbackContext context) {
+
     }
 
-    private void AllowRotations(List<ArticulationBodyXDriveModification> xDriveModifications, bool value)
+        private void AllowRotations(List<ArticulationBodyXDriveModification> xDriveModifications, bool value)
     {
         foreach (ArticulationBodyXDriveModification xDriveModification in xDriveModifications)
         {

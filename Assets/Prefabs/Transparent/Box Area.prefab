@@ -29,7 +29,8 @@ Transform:
   m_GameObject: {fileID: 102208707461939388}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 620.65, y: 50.526, z: 330.55}
-  m_LocalScale: {x: 2, y: 2, z: 2}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -53,6 +54,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -108,9 +110,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49672243a4404c349afad1b2ac4a2da4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useObjects: 1
-  targetTag: 
+  useObjects: 0
+  targetTag: Player
   targetObjects: []
-  globalScale: {x: 2, y: 2, z: 2}
+  globalScale: {x: 0, y: 0, z: 0}
   requiredObjectsAmount: 0
   resultValue: 1

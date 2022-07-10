@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.InputSystem;
 
 public class MainMenuManager : MonoBehaviour
 {
@@ -24,17 +25,19 @@ public class MainMenuManager : MonoBehaviour
 
     public void Open()
     {
+        //InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInDynamicUpdate;
         firstSelectedButton.Select();
         Time.timeScale = 0;
         _isActive = true;
-        MainMenu.SetActive(true);
+        MainMenu.SetActive(true);        
     }
 
     public void Close()
     {
+        //InputSystem.settings.updateMode = InputSettings.UpdateMode.ProcessEventsInFixedUpdate;
         Time.timeScale = 1;
         _isActive = false;
-        MainMenu.SetActive(false);
+        MainMenu.SetActive(false);        
     }
 
     public bool IsActive()

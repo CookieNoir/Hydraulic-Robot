@@ -2,8 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Core;
-using UnityEngine;
 using View;
+using UnityEngine;
 
 public interface IRestartMenuView : IMenuView
 {

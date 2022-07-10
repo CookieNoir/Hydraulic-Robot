@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour {
 
     public static CameraController instance;
+
+    private InputController.RobotBaseActions baseAction;
+    private float inputValue;
 
     public Camera targetCamera;
     public KeyCode nextCameraKeyCode = KeyCode.RightBracket;
@@ -29,6 +33,34 @@ public class CameraController : MonoBehaviour {
         {
             instance = this;
         }
+
+        //Input system initialization
+        baseAction = (new InputController()).RobotBase;
+        baseAction.Enable();
+
+        //Debug.Log(string.Format("Assign buttons to game object {0}\nIncrease button: {1}\nDecrease button: {2}", gameObject.name, increaseValueButton, decreaseValueButton));
+        baseAction.ChangeCamera.AddCompositeBinding("Axis")
+            .With("Positive", string.Format("<Keyboard>/{0}", nextCameraKeyCode))
+            .With("Negative", string.Format("<Keyboard>/{0}", previousCameraKeyCode))
+            .With("MaxValue", "1")
+            .With("MinVlaue", "-1");
+        baseAction.ChangeCamera.performed += OnCameraChanged;
+    }
+
+    private void OnCameraChanged(InputAction.CallbackContext ctx) {
+        if (camerasSet && !isUsingSpecialCamera) {
+            inputValue = baseAction.ChangeCamera.ReadValue<float>();
+
+            if (inputValue > 0) {
+                currentCamera = (currentCamera + 1) % regularTransformsCount;
+                AttachCameraToTransform(regularCamerasContainer.GetChild(currentCamera));
+            }
+            if (inputValue < 0) {
+                currentCamera = (currentCamera - 1 + regularTransformsCount) % regularTransformsCount;
+                AttachCameraToTransform(regularCamerasContainer.GetChild(currentCamera));
+
+            }
+        }
     }
 
     public void SetCamerasContainers(RobotController robotController)
@@ -41,23 +73,6 @@ public class CameraController : MonoBehaviour {
         currentCamera = 0;
         AttachCameraToTransform(regularCamerasContainer.GetChild(currentCamera));
         camerasSet = true;
-    }
-
-    private void Update()
-    {
-        if (camerasSet && !isUsingSpecialCamera)
-        {
-            if (Input.GetKeyDown(nextCameraKeyCode))
-            {
-                currentCamera = (currentCamera + 1) % regularTransformsCount;
-                AttachCameraToTransform(regularCamerasContainer.GetChild(currentCamera));
-            }
-            if (Input.GetKeyDown(previousCameraKeyCode))
-            {
-                currentCamera = (currentCamera - 1 + regularTransformsCount) % regularTransformsCount;
-                AttachCameraToTransform(regularCamerasContainer.GetChild(currentCamera));
-            }
-        }
     }
 
     public void SetSpecialCamera(SpecialCameras specialCamera)
