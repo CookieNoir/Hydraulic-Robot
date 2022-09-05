@@ -1,66 +1,69 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class KeyClickingAndHolding : Task
 {
     [Header("Объекты, связанные с задачей")]
-    public List<KeyCode> keyCodes;
     public bool trackNumberOfClicks;
     public float timeForCompletion = 1f;
     public int clicksForCompletion = 0;
+    public InputActionReference action;
+    private InputAction inAction;
     private float remainingTime;
     private int remainingNumberOfClicks;
-    private Func<KeyCode, bool> getKeyFunction;
-    private Func<int> onKeyPressedFunction;
+    private int taskResult = 0;
+    private bool isTimerActive;
 
     protected override void EnableTaskGameObjects()
     {
+        if (action is not null)
+        {
+            //inAction = (new InputController()).FindAction(action.name);
+            inAction = action;
+            if (!inAction.enabled) inAction.Enable();
+        }
+        else Debug.Log(string.Format("No action specified for game object {0}.", gameObject.name));
+
+        taskResult = 0;
+        isTimerActive = false;
+
         if (trackNumberOfClicks)
         {
             remainingNumberOfClicks = clicksForCompletion;
-            getKeyFunction = Input.GetKeyDown;
-            onKeyPressedFunction = OnKeyPressedDown;
+            inAction.performed += OnClicksPerformed;
         }
         else
         {
             remainingTime = timeForCompletion;
-            getKeyFunction = Input.GetKey;
-            onKeyPressedFunction = OnKeyPressed;
-        } 
+            inAction.started += StartTimer;
+            inAction.canceled += StopTimer;
+        }
+    }
+
+    private void OnClicksPerformed(InputAction.CallbackContext ctx)
+    {
+        if (--remainingNumberOfClicks <= 0) taskResult = 1;
+    }
+
+    private void StartTimer(InputAction.CallbackContext ctx)
+    {
+        isTimerActive = true;
+    }
+
+    private void StopTimer(InputAction.CallbackContext ctx)
+    {
+        isTimerActive = false;
     }
 
     protected override int Task_0()
     {
-        for (int i = 0; i < keyCodes.Count; i++)
+        if (isTimerActive)
         {
-            if (getKeyFunction(keyCodes[i]))
-            {
-                return onKeyPressedFunction();
-            }
+            remainingTime -= Time.deltaTime;
+            if (remainingTime <= 0f) taskResult = 1;
         }
-        return 0;
+        if (taskResult > 0) SetStage(1, CompleteTask);
+        return taskResult;
     }
 
-    private int OnKeyPressed()
-    {
-        remainingTime -= Time.deltaTime;
-        if (remainingTime <= 0)
-        {
-            SetStage(1, CompleteTask);
-            return 1;
-        }
-        else return 0;
-    }
-
-    private int OnKeyPressedDown()
-    {
-        remainingNumberOfClicks--;
-        if (remainingNumberOfClicks <= 0)
-        {
-            SetStage(1, CompleteTask);
-            return 1;
-        }
-        else return 0;
-    }
 }

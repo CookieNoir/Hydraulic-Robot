@@ -1,8 +1,15 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RigidbodyAccessory : RigidbodyAttachableObject
 {
+    public InputActionReference action1;
+    public InputActionReference action2;
+    private InputAction inAction1;
+    private InputAction inAction2;
+    private float inputValue1;
+    private float inputValue2;
     protected bool Equipped { get; private set; }
     protected AccessoryJoinPoint parentObject;
     private IEnumerator setFixedDistance;
@@ -11,6 +18,18 @@ public class RigidbodyAccessory : RigidbodyAttachableObject
     {
         base.Awake();
         setFixedDistance = SetFixedDistanceSmoothly();
+        if (action1 is not null)
+        {
+            inAction1 = action1;
+            if (!inAction1.enabled) inAction1.Enable();
+        }
+        else Debug.Log(string.Format("No action specified for game object {0}.", gameObject.name));
+        if (action2 is not null)
+        {
+            inAction2 = action2;
+            if (!inAction2.enabled) inAction2.Enable();
+        }
+        else Debug.Log(string.Format("No action specified for game object {0}.", gameObject.name));
     }
 
     protected virtual void Start()
@@ -36,18 +55,21 @@ public class RigidbodyAccessory : RigidbodyAttachableObject
         }
     }
 
+    private void Update()
+    {
+        inputValue1 = Equipped ? inAction1.ReadValue<float>() : 0f;
+        inputValue2 = Equipped ? inAction2.ReadValue<float>() : 0f;
+    }
+
     protected virtual void FixedUpdate()
     {
-        if (Equipped)
+        if (inputValue1 != 0f)
         {
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                FirstAction();
-            }
-            if (Input.GetKey(KeyCode.Mouse1))
-            {
-                SecondAction();
-            }
+            FirstAction();
+        }
+        if (inputValue2 != 0f)
+        {
+            SecondAction();
         }
     }
 

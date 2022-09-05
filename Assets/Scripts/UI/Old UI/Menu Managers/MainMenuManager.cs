@@ -6,7 +6,7 @@ public class MainMenuManager : MonoBehaviour
 {
     public PauseMenuManager PauseMenuManager;
     public GameObject MainMenu;
-    public AllTasks AllTasks;
+    public RobotTasks AllTasks;
     public Button firstSelectedButton;
     private CreateListLevel _createList;
     private bool _isActive;
@@ -47,31 +47,33 @@ public class MainMenuManager : MonoBehaviour
 
     public void ResumeEducation()
     {
-        _createList.SetTasks(PauseMenuManager, AllTasks.Tasks, TaskMode.Education);
+        _createList.SetTasks(PauseMenuManager, AllTasks.Tasks);
         //PauseMenuManager.Pause();
         Close();
     }
 
     public void NewEducation()
     {
-        AllTasks.ResetTask();
+        AllTasks.ResetAllTasks();
         EducationHandler.instance.DropTask();
-        _createList.SetTasks(PauseMenuManager, AllTasks.Tasks, TaskMode.Education);
+        _createList.SetTasks(PauseMenuManager, AllTasks.Tasks);
         //PauseMenuManager.Pause();
         Close();
     }
 
+    /*
     public void ResearchesMode()
     {
         Task[] task = { AllTasks.ResearchTask };
-        _createList.SetTasks(PauseMenuManager, task, TaskMode.Education);
+        _createList.SetTasks(PauseMenuManager, task);
         Close();
     }
 
     public void TrainingMode()
     {
-        _createList.SetTasks(PauseMenuManager, AllTasks.RandomTasks, TaskMode.Training);
+        _createList.SetTasks(PauseMenuManager, AllTasks.RandomTasks);
         PauseMenuManager.Pause();
         Close();
     }
+    */
 }

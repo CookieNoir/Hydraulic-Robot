@@ -1,46 +1,60 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class RobotSelector : MonoBehaviour
 {
-    public static RobotSelector instance;
-
-    public List<RobotController> RobotControllers;
-    public RobotController selectedRobotController;
-
-    private void Awake()
-    {
-        if (instance)
-        {
-            Debug.Log("Instance of RobotSelector already exists");
-            Destroy(this);
-        }
-        else
-        {
-            instance = this;
-        }
-    }
+    [SerializeField] private RobotController _startRobotController;
+    [SerializeField] private List<RobotController> _robotControllers;
+    public RobotController SelectedRobotController { get; private set; }
+    public event Action<int> OnRobotSelected;
+    private RobotController _previousRobotController;
+    private RobotController _nextRobotController;
 
     private void Start()
     {
-        RobotControllers.ForEach(r => r.SetEnabled(false));
-        SelectRobot();
+        SelectRobot(_startRobotController);
     }
 
     public void SelectRobot(RobotController robotController)
     {
-        if (selectedRobotController != robotController)
+        if (SelectedRobotController != robotController)
         {
-            if (selectedRobotController) selectedRobotController.SetEnabled(false);
-            selectedRobotController = robotController;
-            SelectRobot();
+            _previousRobotController = SelectedRobotController;
+            _nextRobotController = robotController;
+            DarkScreen.instance.ExecuteInDarkScreen(1f, _SelectRobot);
         }
     }
 
-    private void SelectRobot()
+    public int GetIndexOfSelectedRobot()
     {
-        selectedRobotController.SetEnabled(true);
-        if (JoinCamera.instance) JoinCamera.instance.joinCamera = selectedRobotController.accessoryJoinPoint.joinCamera;
-        CameraController.instance?.SetCamerasContainers(selectedRobotController);
+        if (SelectedRobotController)
+        {
+            return _robotControllers.IndexOf(SelectedRobotController);
+        }
+        else
+        {
+            return -1;
+        }
+    }
+
+    public void DropProgression()
+    {
+        foreach (RobotController robot in _robotControllers)
+        {
+            robot.robotTasks.ResetAllTasks();
+        }
+    }
+
+    private void _SelectRobot()
+    {
+        if (_previousRobotController) _previousRobotController.gameObject.SetActive(false);
+        SelectedRobotController = _nextRobotController;
+        SelectedRobotController.gameObject.SetActive(true);
+        SelectedRobotController.SetState(null);
+        if (JoinCamera.instance) JoinCamera.instance.joinCamera = SelectedRobotController.accessoryJoinPoint.joinCamera;
+        CameraController.instance?.SetCamerasContainers(SelectedRobotController);
+        EducationHandler.instance.DropProgression();
+        OnRobotSelected?.Invoke(GetIndexOfSelectedRobot());
     }
 }

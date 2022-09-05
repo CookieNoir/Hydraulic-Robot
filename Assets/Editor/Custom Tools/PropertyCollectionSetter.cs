@@ -66,8 +66,10 @@ public class PropertyCollectionSetter : EditorWindow
             Transform child = parentTransform.GetChild(i);
             if (child.gameObject.activeSelf)
             {
-                object component = parentTransform.GetChild(i).GetComponentInChildren(argumentType);
-                if (component != null) list.Add(component);
+                foreach (object component in parentTransform.GetChild(i).GetComponentsInChildren(argumentType))
+                {
+                    list.Add(component);
+                }
             }
         }
         if (isArray)

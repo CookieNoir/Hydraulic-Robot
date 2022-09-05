@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -6,6 +7,7 @@ public class EducationHandler : MonoBehaviour
 {
     public static EducationHandler instance;
 
+    public RobotSelector robotSelector;
     [Space(10)]
     public Text taskDescription;
     public Text instruction;
@@ -18,6 +20,8 @@ public class EducationHandler : MonoBehaviour
     [Header("Таймер")]
     public TimerContent timerContent;
     public string timeoutText;
+
+    public event Action<bool> OnLevelStarted;
     private float valueMultiplier;
     private float penaltyTime;
     private Task task = null;
@@ -147,23 +151,20 @@ public class EducationHandler : MonoBehaviour
         {
             SetValuesFromTask();
         }
+        OnLevelStarted?.Invoke(true);
     }
 
     private void SetValuesFromTask()
     {
-        if (RobotSelector.instance)
-        {
-            RobotSelector.instance.selectedRobotController.SetState(null);
-            RobotSelector.instance.SelectRobot(task.Take());
-            ChangeWindowsActivity(true);
-            SetTextValues(task.GetCurrentDescription(), task.GetCurrentInstruction());
-            SetTimer(task.GetTimeWithDelay());
-            penaltyTime = -task.timeLimit;
-            valueMultiplier = 1f;
-            ResetEffect();
-            taskValuesAreSet = true;
-            taskNotEvaluated = true;
-        }
+        task.Take(robotSelector.SelectedRobotController);
+        ChangeWindowsActivity(true);
+        SetTextValues(task.GetCurrentDescription(), task.GetCurrentInstruction());
+        SetTimer(task.GetTimeWithDelay());
+        penaltyTime = -task.timeLimit;
+        valueMultiplier = 1f;
+        ResetEffect();
+        taskValuesAreSet = true;
+        taskNotEvaluated = true;
     }
 
     public void EndTask(bool result)
@@ -186,8 +187,8 @@ public class EducationHandler : MonoBehaviour
         if (taskValuesAreSet && taskNotEvaluated)
         {
             UpdateTime();
-            int result = task.CheckStageTask();
-            switch (result)
+
+            switch (task.CheckStageTask())
             {
                 case 1: // если 1, то промежуточный этап задачи успешно выполнен
                     {
@@ -266,6 +267,13 @@ public class EducationHandler : MonoBehaviour
             taskValuesAreSet = false;
         }
         ChangeWindowsActivity(false);
+    }
+
+    public void DropProgression()
+    {
+        DropTask();
+        previousTask = null;
+        OnLevelStarted?.Invoke(false);
     }
 
     private IEnumerator DropTaskDelay()

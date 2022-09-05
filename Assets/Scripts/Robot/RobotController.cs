@@ -1,10 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-#if UNITY_EDITOR
-using UnityEditor;
-#endif
 
 public class RobotController : ArticulationBodyCenterOfMass
 {
@@ -20,8 +18,9 @@ public class RobotController : ArticulationBodyCenterOfMass
     public float criticalAngle = -95f;
     private bool legsTouchSurface;
     public ArticulationBodyMovement movement;
-    private InputController.RobotBaseActions baseAction;
-    private Vector2 inputValue;
+    public InputActionReference leftInputAction, rightInputAction;
+    private InputAction leftIA, rightIA;
+    private float inputValueLeft, inputValueRight;
     public bool MovementAllowed { get; private set; } = false;
     public bool RotationsAllowed { get; private set; } = false;
     [Space(10, order = 0), Header("Навесное оборудование и перегруз", order = 1)]
@@ -32,6 +31,7 @@ public class RobotController : ArticulationBodyCenterOfMass
     [Space(10, order = 0), Header("Состояния", order = 1)]
     public RobotState defaultState;
     public float timeForSettingState = 2f;
+    public RobotTasks robotTasks;
     private List<Collider> childrenColliders;
     private bool stateIsSet = true;
     private IEnumerator setStateWithDelayCoroutine;
@@ -41,37 +41,66 @@ public class RobotController : ArticulationBodyCenterOfMass
         base.Awake();
         childrenColliders = new List<Collider>(transform.GetComponentsInChildren<Collider>());
         setStateWithDelayCoroutine = SetStateWithDelayCoroutine(defaultState);
-        baseAction = (new InputController()).RobotBase;
-        baseAction.Enable();
-    }
 
-     private void Update()
-     {
-         if (stateIsSet)
-         {
-             legsTouchSurface = LegsTouchSurface();
-             RotationsAllowed = alwaysAllowRotations || (legsTouchSurface && accessoryJoinPoint.IsFree);
-             AllowRotations(articulationBodyRotations, RotationsAllowed);
-             MovementAllowed = accessoryJoinPoint.IsFree && (caterpillarLeftCollisionCounter.HasCollisions || caterpillarRightCollisionCounter.HasCollisions) && !legsTouchSurface;
-
-            inputValue = baseAction.Movement.ReadValue<Vector2>();
-
-            if (MovementAllowed) {
-                movement.Move(
-                    transform.forward,
-                    inputValue.y * accessoryJoinPoint.SpeedModifier,
-                    transform.up,
-                    inputValue.x * accessoryJoinPoint.SpeedModifier
-                );
-            }
+        if (leftInputAction is not null)
+        {
+            leftIA = leftInputAction.action;
+            if (!leftIA.enabled) leftIA.Enable();
         }
-     }
+        else Debug.Log(string.Format("No action specified for game object {0}.", gameObject.name));
 
-    public void MoveRobotArmL0(InputAction.CallbackContext context) {
-
+        if (rightInputAction is not null)
+        {
+            rightIA = rightInputAction.action;
+            if (!rightIA.enabled) rightIA.Enable();
+        }
+        else Debug.Log(string.Format("No action specified for game object {0}.", gameObject.name));
     }
 
-        private void AllowRotations(List<ArticulationBodyXDriveModification> xDriveModifications, bool value)
+    void OnDisable()
+    {
+        if (leftIA.enabled) leftIA.Disable();
+        if (rightIA.enabled) rightIA.Disable();
+    }
+
+    void OnEnable()
+    {
+        if (!leftIA.enabled) leftIA.Enable();
+        if (!rightIA.enabled) rightIA.Enable();
+    }
+
+
+    private void Update()
+    {
+        if (stateIsSet)
+        {
+            legsTouchSurface = LegsTouchSurface();
+            RotationsAllowed = alwaysAllowRotations || (legsTouchSurface && accessoryJoinPoint.IsFree);
+            AllowRotations(articulationBodyRotations, RotationsAllowed);
+            MovementAllowed = accessoryJoinPoint.IsFree
+                && (caterpillarLeftCollisionCounter.HasCollisions
+                || caterpillarRightCollisionCounter.HasCollisions)
+                && !legsTouchSurface;
+
+            inputValueLeft = leftIA.ReadValue<float>();
+            inputValueRight = rightIA.ReadValue<float>();
+        }
+        else MovementAllowed = false;
+    }
+
+    private void FixedUpdate()
+    {
+        if (MovementAllowed)
+        {
+            movement.Move(
+                inputValueLeft,
+                inputValueRight,
+                accessoryJoinPoint.SpeedModifier
+            );
+        }
+    }
+
+    private void AllowRotations(List<ArticulationBodyXDriveModification> xDriveModifications, bool value)
     {
         foreach (ArticulationBodyXDriveModification xDriveModification in xDriveModifications)
         {

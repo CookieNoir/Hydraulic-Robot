@@ -47,7 +47,6 @@ public class PauseMenuManager : MonoBehaviour
 
     private void OnBack(InputAction.CallbackContext ctx) 
     {
-        Debug.Log("Back button pressed");
         if (_thisStackView.Count != 0) 
         {
             Back();

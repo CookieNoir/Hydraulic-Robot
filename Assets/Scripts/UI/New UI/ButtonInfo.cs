@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
@@ -19,20 +16,12 @@ public class ButtonInfo : MonoBehaviour
         LevelScore.text = _task.currentValue.ToString();
     }
 
-    public void SetTask(Task task, TaskMode mode, int number)
+    public void SetTask(Task task, int number)
     {
         _task = task;
-        _task.taskMode = mode;
         _taskNumberString = number.ToString() + ". ";
         LevelName.text = _taskNumberString + task.taskName;
-        if (mode == TaskMode.Education)
-        {
-            LevelScore.text = task.currentValue.ToString();
-        }
-        else
-        {
-            LevelScore.text = task.currentExtraValue.ToString();
-        }
+        LevelScore.text = task.currentValue.ToString();
     }
 
     public Task GetTask()

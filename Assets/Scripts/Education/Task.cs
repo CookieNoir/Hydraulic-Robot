@@ -1,24 +1,11 @@
 ﻿using UnityEngine;
 using System;
 
-public enum TaskMode
+public class Task : MonoBehaviour
 {
-    Education,
-    Training
-}
-
-public interface TaskCurrentValue
-{
-    int currentValue { get; set; } //хранит текущее кол-во очков
-    int currentExtraValue { get; set; } //хранит текущее доп. кол-во очков(для задач доп. тренировки)
-}
-
-public class Task : MonoBehaviour, TaskCurrentValue
-{
-    public RobotController robot;
+    public int taskId;
+    protected RobotController robot;
     public int currentValue { get; set; }
-    public int currentExtraValue { get; set; }
-    public TaskMode taskMode = TaskMode.Education; // Определяет тип задачи: в режиме обучения или доп. тренировок
     [Header("Наименование задачи")]
     public string taskNamePrefix;
     public string taskNameBody;
@@ -46,6 +33,7 @@ public class Task : MonoBehaviour, TaskCurrentValue
     protected void Awake()
     {
         ConnectNameParts();
+        currentValue = PlayerPrefs.GetInt($"Level {taskId}");
     }
 
     private void ConnectNameParts()
@@ -130,13 +118,13 @@ public class Task : MonoBehaviour, TaskCurrentValue
         CameraController.instance.SetRegularCamera();
     }
 
-    public RobotController Take()
+    public void Take(RobotController activeRobot)
     {
+        robot = activeRobot;
         RobotSetStartPosition();
         EnableTaskGameObjects();
         isWaitingForCompletion = false;
         SetStage(0, Task_0);
-        return robot;
     }
 
     public void Drop()
@@ -150,15 +138,12 @@ public class Task : MonoBehaviour, TaskCurrentValue
         if (isCompleted)
         {
             int newValue = Mathf.FloorToInt(valueMultiplier * value);
-            if (taskMode == TaskMode.Education)
+            if (currentValue < newValue)
             {
-                currentValue = currentValue < newValue ? newValue : currentValue;
+                currentValue = newValue;
+                PlayerPrefs.SetInt($"Level {taskId}", currentValue);
             }
-            else
-            {
-                currentExtraValue = currentExtraValue < newValue ? newValue : currentExtraValue;
-            }
-            return value;
+            return currentValue;
         }
         else
             return 0;
@@ -187,6 +172,6 @@ public class Task : MonoBehaviour, TaskCurrentValue
     public void RemoveValue()
     {
         currentValue = 0;
-        currentExtraValue = 0;
+        PlayerPrefs.SetInt($"Level {taskId}", currentValue);
     }
 }

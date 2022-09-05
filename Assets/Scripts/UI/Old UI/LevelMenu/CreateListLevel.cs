@@ -14,10 +14,10 @@ public class CreateListLevel : MonoBehaviour
     //isEducationMode
     //true - обычный режим обучения
     //false - режим доп. тренировок
-    public void SetTasks(PauseMenuManager menuManager, Task[] task, TaskMode mode)
+    public void SetTasks(PauseMenuManager menuManager, Task[] task)
     {
         Tasks = task;
-        GenerateLevels(menuManager, mode);
+        GenerateLevels(menuManager);
     }
 
     private void OnEnable()
@@ -26,7 +26,7 @@ public class CreateListLevel : MonoBehaviour
         UpdateLevels();
     }
 
-    public void GenerateLevels(PauseMenuManager menuManager, TaskMode mode)
+    public void GenerateLevels(PauseMenuManager menuManager)
     {
         RemoveList();
         int levelCount = Tasks.Length;
@@ -37,7 +37,7 @@ public class CreateListLevel : MonoBehaviour
                 ButtonInfo button = Instantiate(Button, ButtonParent).GetComponent<ButtonInfo>();
                 _buttons.Add(button);
                 Task task = Tasks[i];
-                button.SetTask(task, mode, i + 1);
+                button.SetTask(task, i + 1);
                 button.SetEvent(() => EducationHandler.instance?.DropAndSetTask(task));
                 button.SetEvent(() => menuManager.AllBack());
             }

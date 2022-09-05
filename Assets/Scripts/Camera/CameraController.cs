@@ -1,16 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour {
 
     public static CameraController instance;
-
-    private InputController.RobotBaseActions baseAction;
-    private float inputValue;
-
     public Camera targetCamera;
-    public KeyCode nextCameraKeyCode = KeyCode.RightBracket;
-    public KeyCode previousCameraKeyCode = KeyCode.LeftBracket;
+    public InputActionReference action;
+    private InputAction inAction;
+    private float inputValue;
     private int currentCamera;
     private bool isUsingSpecialCamera = false;
     private bool camerasSet = false;
@@ -34,22 +32,17 @@ public class CameraController : MonoBehaviour {
             instance = this;
         }
 
-        //Input system initialization
-        baseAction = (new InputController()).RobotBase;
-        baseAction.Enable();
-
-        //Debug.Log(string.Format("Assign buttons to game object {0}\nIncrease button: {1}\nDecrease button: {2}", gameObject.name, increaseValueButton, decreaseValueButton));
-        baseAction.ChangeCamera.AddCompositeBinding("Axis")
-            .With("Positive", string.Format("<Keyboard>/{0}", nextCameraKeyCode))
-            .With("Negative", string.Format("<Keyboard>/{0}", previousCameraKeyCode))
-            .With("MaxValue", "1")
-            .With("MinVlaue", "-1");
-        baseAction.ChangeCamera.performed += OnCameraChanged;
+        if (action is not null) {
+            inAction = action;
+            inAction.performed += OnCameraChanged;
+            if (!inAction.enabled) inAction.Enable();
+        } 
+        else Debug.Log(string.Format("No action specified for game object {0}.", gameObject.name));
     }
 
     private void OnCameraChanged(InputAction.CallbackContext ctx) {
         if (camerasSet && !isUsingSpecialCamera) {
-            inputValue = baseAction.ChangeCamera.ReadValue<float>();
+            inputValue = inAction.ReadValue<float>();
 
             if (inputValue > 0) {
                 currentCamera = (currentCamera + 1) % regularTransformsCount;
@@ -58,9 +51,13 @@ public class CameraController : MonoBehaviour {
             if (inputValue < 0) {
                 currentCamera = (currentCamera - 1 + regularTransformsCount) % regularTransformsCount;
                 AttachCameraToTransform(regularCamerasContainer.GetChild(currentCamera));
-
             }
         }
+    }
+
+    public void SetFree()
+    {
+        targetCamera.transform.parent = null;
     }
 
     public void SetCamerasContainers(RobotController robotController)

@@ -5,21 +5,29 @@ using UnityEngine;
 public class RailsMovement : ArticulationBodyMovement
 {
     [SerializeField] private Transform _offsetPoint;
+    [SerializeField] private Transform _movementAxis;
     private RailsModel _rails;
     private Vector3 _projection = Vector3.zero;
     private bool _onRails;
     private const float _ALLOWED_COS = 0.99f;
     private const float _MIN_FORCE = 0.001f;
 
-    public override void Move(Vector3 forceDirection, float forceMultiplier, Vector3 torqueDirection, float torqueMultiplier)
+    public override void Move(float axisLeft, float axisRight, float dynamicForceMultiplier)
     {
-        if (_onRails && Mathf.Abs(forceMultiplier) > _MIN_FORCE)
+        float absLeft = Mathf.Abs(axisLeft);
+        float absRight = Mathf.Abs(axisRight);
+        float influence =
+            absLeft + absRight < 0.001f ?
+            0.5f :
+            absRight / (absLeft + absRight);
+        float force = forceMultiplier * dynamicForceMultiplier * Mathf.Lerp(axisLeft, axisRight, influence);
+        if (_onRails && Mathf.Abs(force) > _MIN_FORCE)
         {
             float shortestDistance;
             Vector3 currentPoint = _rails.GetProjectionOfPoint(_offsetPoint.position, out shortestDistance);
-            Vector3 newPoint = _rails.GetProjectionOfPoint(_offsetPoint.position + currentLinearSpeed * forceMultiplier * forceDirection, out shortestDistance);
+            Vector3 newPoint = _rails.GetProjectionOfPoint(_offsetPoint.position + force * Time.fixedDeltaTime * _movementAxis.forward, out shortestDistance);
             Vector3 difference = newPoint - currentPoint;
-            if (forceMultiplier < 0f) difference *= -1f;
+            if (force < 0f) difference *= -1f;
             float yAngle = Mathf.Atan2(difference.z, difference.x) * Mathf.Rad2Deg + 90f;
             articulationBody.TeleportRoot((articulationBody.transform.position - _offsetPoint.position) + newPoint,
                 Quaternion.Euler(articulationBody.transform.rotation.x, yAngle, articulationBody.transform.rotation.z));

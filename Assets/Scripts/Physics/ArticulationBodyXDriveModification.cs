@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using System.Text.RegularExpressions;
 
 [RequireComponent(typeof(ArticulationBody))]
 public class ArticulationBodyXDriveModification : MonoBehaviour
@@ -8,13 +7,12 @@ public class ArticulationBodyXDriveModification : MonoBehaviour
     public bool independent = true;
     public float speed = 90f;
     [Space(10)]
-    public KeyCode decreaseValueButton;
-    public KeyCode increaseValueButton;
-
-    //Input System
-    private PlayerInput playerInput;
-    private InputController.RobotArmActions armAction;
+    [Header("Input properties")]
+    public InputActionReference action;
+    //Input System 
+    private InputAction inAction;
     private float inputValue;
+    private InputActionSetupExtensions.CompositeSyntax binding;
 
     private ArticulationBody articulationBody;
     private ArticulationDrive xDrive;
@@ -31,26 +29,42 @@ public class ArticulationBodyXDriveModification : MonoBehaviour
         inRadians = articulationBody.jointType != ArticulationJointType.PrismaticJoint;
         angleModifier = inRadians ? Mathf.Rad2Deg : 1f;
 
-        //Input system initialization
-        armAction = (new InputController()).RobotArm;
-        armAction.Enable();
-        armAction.MoveJoint.AddCompositeBinding("Axis")
-            .With("Positive", string.Format("<Keyboard>/{0}", increaseValueButton))
-            .With("Negative", string.Format("<Keyboard>/{0}", decreaseValueButton))
-            .With("MaxValue", "1")
-            .With("MinVlaue", "-1");
+        if (action is not null) 
+        {
+            inAction = action;
+
+            // Пример программного добавления привязки.
+            //inAction.AddCompositeBinding("Axis")
+            //    .With("Positive", "<Keyboard>/" + increaseValueButton.ToString())
+            //    .With("Negative", "<Keyboard>/" + decreaseValueButton.ToString())
+            //    .With("MaxValue", "1")
+            //    .With("MinVlaue", "-1");
+
+            if (!inAction.enabled) inAction.Enable();
+        }
+        else Debug.Log(string.Format("No action specified for game object {0}.", gameObject.name));
+    }
+
+    void OnDisable() {
+        if (inAction.enabled) inAction.Disable();
+    }
+
+    void OnEnable() {
+        if (!inAction.enabled) inAction.Enable();
     }
 
     private void Update() {
-        if (independent && rotationAllowed) 
+        if (independent && rotationAllowed)
         {
-            inputValue = armAction.MoveJoint.ReadValue<float>();
-
-            if (inputValue > 0)
-                OnIncreaseAction();
-            if (inputValue < 0)
-                OnDecreaseAction();
+            inputValue = inAction.ReadValue<float>();
         }
+        else inputValue = 0f;
+    }
+
+    private void FixedUpdate()
+    {
+        if (inputValue > 0) OnIncreaseAction();
+        if (inputValue < 0) OnDecreaseAction();
     }
 
     protected virtual void OnDecreaseAction()

@@ -6,104 +6,1166 @@
             "id": "a3f3a9c1-7160-4467-8838-76e92bfef068",
             "actions": [
                 {
-                    "name": "MoveJoint",
+                    "name": "Move Link 0",
+                    "type": "Value",
+                    "id": "99d0c0f9-d51b-4b26-85ee-e9e46a6a9c35",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Move Link 1",
+                    "type": "Value",
+                    "id": "c96c9c6d-98bd-4ea8-a790-06428f98f7cc",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Move Link 2",
+                    "type": "Value",
+                    "id": "9a5381c1-94d6-452d-8596-6efbcb0d3444",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Move Link 3",
+                    "type": "Value",
+                    "id": "7e193edf-8657-4560-b02d-54bc6afa940c",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Move Link 4",
+                    "type": "Value",
+                    "id": "b005903b-beff-4f73-a561-a97057b91551",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Move Link 5",
+                    "type": "Value",
+                    "id": "b33ca7b4-8331-4373-a19b-9d801ce6ae2d",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Move Link 6",
+                    "type": "Value",
+                    "id": "99086614-6652-4d21-9c0d-d045c4bc0a6f",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Move Link 7",
+                    "type": "Value",
+                    "id": "174cc16e-427b-4ebb-b9da-192cba2f7619",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Move Link 8",
+                    "type": "Value",
+                    "id": "9a27f504-26c4-4bd7-9706-b395713b6843",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Move Link 9",
+                    "type": "Value",
+                    "id": "d49d1460-7b88-4d5f-95fa-d90d579aafca",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Move Outrigger",
+                    "type": "Value",
+                    "id": "1c73c3d5-549d-4a9c-85ec-1bcc06f46566",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "AttachEquipment",
                     "type": "Button",
-                    "id": "01f5a158-9a0e-4776-bc34-4ca6d96b7b01",
+                    "id": "f06fe0dd-2b6b-4267-9f65-caab00e57e28",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "AttachmentAction1",
+                    "type": "Button",
+                    "id": "3b0b8caa-5213-48a5-9bd3-4ddd7037800a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "AttachmentAction2",
+                    "type": "Button",
+                    "id": "fd85789e-5831-4bb1-b0ff-89289e85da4c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
-            "bindings": []
+            "bindings": [
+                {
+                    "name": "One Modifier",
+                    "id": "42198728-7387-417a-8538-9c2c7c9ca335",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 0",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "0051566f-7b93-410c-bc10-e2c5f808a9cd",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 0",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "349b14c5-695b-42bd-9aeb-b988025452c4",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/rx",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 0",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "3f001594-43fb-4798-890c-335f09917cec",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 0",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "33a7007c-13a5-4398-a7cc-eed7c565fd0c",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 0",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "438f8fdb-dd0b-4d42-a7a9-1f8134c401b2",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 0",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Two Modifiers",
+                    "id": "fa07ee94-0a45-4156-b310-f06fca86b7be",
+                    "path": "TwoModifiers",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 1",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier1",
+                    "id": "4f3e687c-6fff-43ea-ade1-3800bcc2d4cc",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "modifier2",
+                    "id": "7c09695e-9401-4ad0-870e-a4d41c797112",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "585e4531-9d79-4bca-a2a3-d11374d62929",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/stick/x",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "70d6e2a9-fb17-4524-9276-d801980c3f81",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 1",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "a0828db6-a394-4288-9833-20fff14bafae",
+                    "path": "<Keyboard>/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "a6c98cc9-ea0a-4ece-a8b3-6c58496d67da",
+                    "path": "<Keyboard>/u",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 1",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "ef21c1ba-09d2-460a-8f3a-fa9f2c0648a7",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 2",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "56eecf13-7a41-430e-9879-94ebddf2992c",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 2",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Binding",
+                    "id": "0fcdff1d-a449-458e-8f6c-cc549407b40c",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/stick/y",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 2",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "62cafc85-185b-4baa-8564-11a9c5ab8c89",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 2",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "4d6994f6-fdde-425c-a0ec-dc2dc543a0a3",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 2",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "5f75a42e-4ac3-4867-8052-9e91f2558263",
+                    "path": "<Keyboard>/o",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 2",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "3d111ccd-efd5-447a-9f54-81b3756c47cb",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Outrigger",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "aa5dd90f-b977-4ac3-a2d3-43b3f5b8e085",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button10",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Outrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "af984e34-6826-4c5d-9e97-302e0ba38110",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/stick/y",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Outrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "9b18184e-c8e1-4580-875b-c3b238939e96",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Outrigger",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "0b3bd57d-de71-4629-82c9-6914ee1184e6",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Outrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "5de7b548-b6e6-475a-b84d-6ae6f360d56d",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Outrigger",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Two Modifiers",
+                    "id": "a7144e6d-1fa5-41ae-a238-5353ba0a1aeb",
+                    "path": "TwoModifiers",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 3",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier1",
+                    "id": "4a1c9e52-b1eb-4b2e-9acb-c55adb7e9446",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 3",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "modifier2",
+                    "id": "bf2aef81-adb5-4573-ab72-df99096c2a17",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 3",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "13ea784f-0f34-40c3-9bbc-cdf6fb052a34",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/stick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 3",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "dda10f09-ac77-452e-86d6-186e44aea63a",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 3",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "9fd41b41-2513-43cd-97bc-ca30202f0670",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 3",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "2058df42-21b9-4c2a-bd0a-e21f67649151",
+                    "path": "<Keyboard>/g",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 3",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "787d89ce-b30f-4a67-ab6f-5a47143f97ae",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 5",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "8ef2d948-4aa8-4901-ba5a-e73db49db69b",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 5",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "7fbc43d6-efe8-46e9-acf0-b6aafa0d6eaa",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/ry",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 5",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "f9d7eba7-73ae-4d6c-af69-4d1fa4b4ea93",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 5",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "e26037ad-745f-4a69-8085-26af7a3496ac",
+                    "path": "<Keyboard>/h",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 5",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "d0c4a9ce-55f6-4839-937e-d603f502a8f9",
+                    "path": "<Keyboard>/j",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 5",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Two Modifiers",
+                    "id": "ae5e3293-9230-412b-983a-0b00d6a19a55",
+                    "path": "TwoModifiers",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 6",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier1",
+                    "id": "e0849a1a-e488-4f2a-b04a-26db522ac5fe",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 6",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "modifier2",
+                    "id": "2a497ee7-36ed-4d62-ba14-178e1fa44100",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button6",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 6",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "f9b243d7-304a-40ac-8fff-83378e3b59cc",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/rx",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 6",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "3774c1ec-baba-4b8c-bf19-bb72b26b1094",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 6",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "df60efde-73aa-4c13-afeb-34c12c78265e",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 6",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "af235397-c9c6-448c-a385-79804c2d3227",
+                    "path": "<Keyboard>/l",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 6",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "fb2c1971-ad8a-42c3-8a30-cad8c6140559",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 7",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Modifier",
+                    "id": "52a8fda7-b816-4ca7-8f33-de0b974b3e73",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 7",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Binding",
+                    "id": "6636f355-fcb5-45c2-a2bd-481fd8b7c5d5",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/stick/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 7",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "ef9b52ed-0da0-448c-905f-f6c47fd5fcd9",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 7",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "6f74054b-170a-4b55-a682-ae697095a25e",
+                    "path": "<Keyboard>/z",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 7",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "475d4fcb-b168-4c3b-891e-805c28bf1dff",
+                    "path": "<Keyboard>/x",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 7",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "Two Modifiers",
+                    "id": "ce0b0e26-ab2b-450b-b9e0-46dca2f2b286",
+                    "path": "TwoModifiers",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 9",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier1",
+                    "id": "be8c6c83-30cd-4ab1-9f5b-1bb0476c21f2",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 9",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "modifier2",
+                    "id": "b7c398b5-2cbc-4c67-936a-fbd8c148e0fe",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 9",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "d51895b0-bac8-4908-8ebb-954cec6954a1",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/ry",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 9",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "866cf5fb-2aef-4eb7-86d6-95a804e548c2",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 9",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "d4892446-1579-48cf-ba65-d4a8bd426f6e",
+                    "path": "<Keyboard>/b",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 9",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "0bf04275-ea34-4a9d-addd-3c83816ebe08",
+                    "path": "<Keyboard>/n",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 9",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "d66763ec-f6e5-4102-ab34-d4e358c949e1",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttachEquipment",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "19118870-a47c-4d97-81c8-4499c3ce3843",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "AttachEquipment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "7d3e589c-14d9-45c0-94aa-61c1ec9ae88b",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AttachEquipment",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "86a61539-5d3d-43b2-91f2-a426b953e564",
+                    "path": "<Keyboard>/slash",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "AttachEquipment",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "Two Modifiers",
+                    "id": "e8757fd6-8c00-4603-9b2e-f271d8f5ffed",
+                    "path": "TwoModifiers",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 8",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier1",
+                    "id": "ecf002f3-52ee-4bcf-88cd-c492ccf7a440",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button9",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 8",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "modifier2",
+                    "id": "5a98d1e7-d5b4-4bc5-9a11-796413bbfd29",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 8",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "daa3cff9-5bd7-4f74-b233-ca1233b5f034",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/rx",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Move Link 8",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "8c3ede47-4ece-4212-be07-65af80890c49",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Move Link 8",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "772dce70-cef7-4555-a7a3-667cf6dc1792",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 8",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "339cc012-803e-42eb-b5a4-e6f95e5a955d",
+                    "path": "<Keyboard>/v",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Move Link 8",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "a77cbf2b-7c55-4e47-ab7a-7c1cb690ab5b",
+                    "path": "<Keyboard>/period",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "AttachmentAction1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79056bb6-7812-4c65-8d90-276b88a2121a",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "AttachmentAction1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "72c13a14-6c45-4ef1-bc7f-a05f30632a24",
+                    "path": "<Keyboard>/comma",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "AttachmentAction2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9090793c-7065-44cd-bc7f-ba18050d5930",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "AttachmentAction2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         },
         {
             "name": "RobotBase",
             "id": "2236ff74-566c-4e2c-93cd-b052ef4fe0d3",
             "actions": [
                 {
-                    "name": "Movement",
+                    "name": "ChangeCamera",
                     "type": "Value",
-                    "id": "e2255742-c557-49e1-b7ac-2f4edd96829b",
-                    "expectedControlType": "Vector2",
+                    "id": "e69c8c03-750e-4057-a473-3988cf5f88ef",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-                    "name": "ChangeCamera",
-                    "type": "Button",
-                    "id": "e69c8c03-750e-4057-a473-3988cf5f88ef",
-                    "expectedControlType": "Button",
+                    "name": "MoveLeft",
+                    "type": "Value",
+                    "id": "14b0f61b-d05b-4ba2-9cc9-6aee27109bc7",
+                    "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MoveRight",
+                    "type": "Value",
+                    "id": "4a06b86d-d6aa-4e55-8fea-044c25f24adc",
+                    "expectedControlType": "Axis",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
                 {
-                    "name": "",
-                    "id": "c23b41cb-9703-4da3-88bc-710ef7538c13",
-                    "path": "<RoinControlPanel>/stick1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Integrated Panel",
-                    "action": "Movement",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "WASD",
-                    "id": "15a76509-2499-4c61-808a-6e19c6471920",
-                    "path": "2DVector(mode=1)",
+                    "name": "1D Axis",
+                    "id": "6f9dcea8-5d1c-488b-ab7a-d9976a335ecc",
+                    "path": "1DAxis",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Movement",
+                    "action": "ChangeCamera",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "8be92c33-756d-4b6b-972f-b8b445adf100",
-                    "path": "<Keyboard>/w",
+                    "name": "negative",
+                    "id": "e2599cf3-e795-4d1b-b370-5fadc62fba05",
+                    "path": "<Keyboard>/leftBracket",
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse + Keyboard",
-                    "action": "Movement",
+                    "action": "ChangeCamera",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "down",
-                    "id": "a29b862a-4a71-4b45-93cb-4b72244fcf68",
-                    "path": "<Keyboard>/s",
+                    "name": "positive",
+                    "id": "5f1aee24-a720-493e-9a90-defe51875706",
+                    "path": "<Keyboard>/rightBracket",
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse + Keyboard",
-                    "action": "Movement",
+                    "action": "ChangeCamera",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "left",
-                    "id": "ed67b6de-bde4-414c-a6fd-23e9a5b645bd",
+                    "name": "1D Axis",
+                    "id": "8741263f-2ddf-4585-b6e4-fd3088b8d9e7",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ChangeCamera",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "c2a36795-2ec4-4cea-a902-b40dc14636bf",
+                    "path": "<Joystick>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "ChangeCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "df991054-8f92-4e83-9b22-818afc4d79e1",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "ChangeCamera",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "6287477f-30ed-4b28-a744-867fbe32ec80",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveLeft",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "957cf4f4-0462-4402-98a4-1dba78f37dcd",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button11",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "MoveLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "25e246db-4ab2-4228-a6f1-e7f883023fce",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/rx",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "Integrated Panel",
+                    "action": "MoveLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "216e50c3-fd22-4a1b-a968-e8837e9f6ff6",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveLeft",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "c6c735b8-a712-404c-a516-46b45d0d0547",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse + Keyboard",
-                    "action": "Movement",
+                    "action": "MoveLeft",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "right",
-                    "id": "d26b5190-6466-419b-8a72-b4441eb1063f",
-                    "path": "<Keyboard>/d",
+                    "name": "positive",
+                    "id": "16d96f63-0cbf-4c91-9423-146499cc77ea",
+                    "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse + Keyboard",
-                    "action": "Movement",
+                    "action": "MoveLeft",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "One Modifier",
+                    "id": "9f2f153d-b190-4374-81ba-f2e940a1e966",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveRight",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "7cf5e858-62aa-4d90-b27b-89f087c045cf",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button11",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "MoveRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "5df5355a-52eb-44b7-a25e-e8be623ad82f",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/stick/y",
+                    "interactions": "",
+                    "processors": "Invert",
+                    "groups": "Integrated Panel",
+                    "action": "MoveRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "b94e6872-4da6-476c-be46-749057f8f75d",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MoveRight",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "978f483c-80a6-4c48-9422-194e10dff6ea",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "MoveRight",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "b177e9ed-3126-43b3-9900-4008932dca27",
+                    "path": "<Keyboard>/w",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "MoveRight",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }
@@ -115,12 +1177,12 @@
             "actions": [
                 {
                     "name": "Navigate",
-                    "type": "PassThrough",
+                    "type": "Value",
                     "id": "0071df46-9114-433f-9159-9fb19d6dfb3c",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Dpad",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Submit",
@@ -163,6 +1225,15 @@
                     "type": "PassThrough",
                     "id": "5bc567c2-d2b7-481f-8947-3cd2975dc1c1",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "LeftClick",
+                    "type": "PassThrough",
+                    "id": "3000095b-ca48-47ac-bbf7-2594e47446e4",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -211,174 +1282,36 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "4cf3dc83-7e5b-44d6-8cb1-b9c512f3ecc1",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Select Next Button",
+                    "type": "Button",
+                    "id": "480ecc73-be97-4cf1-a4cd-ac089a88551e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Select Previous Button",
+                    "type": "Button",
+                    "id": "98f664e6-ed20-44d7-a650-d34ad3aad9ae",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
-                {
-                    "name": "Gamepad",
-                    "id": "0fc2903c-f652-407c-a8a0-ae2400ae92b4",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Navigate",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "fd67200b-4c5b-4173-b8f7-e7630e0d5fd6",
-                    "path": "<Gamepad>/leftStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "up",
-                    "id": "418254ab-7651-4333-95b9-ad34f1ef8bb4",
-                    "path": "<Gamepad>/rightStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "724ccca2-be31-42a9-bb25-4957e3bc62fa",
-                    "path": "<Gamepad>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "0f228b5e-0288-418a-8b67-08c6a0145497",
-                    "path": "<Gamepad>/rightStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "6e9f6214-4262-4e7a-8527-4fcca042e6f0",
-                    "path": "<Gamepad>/leftStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "405b04aa-b203-459d-a809-da4bb4a9442d",
-                    "path": "<Gamepad>/rightStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "8829aaad-0858-4213-a712-fab0542137aa",
-                    "path": "<Gamepad>/leftStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "0016830d-dd8f-44aa-956d-d0c57fcd709e",
-                    "path": "<Gamepad>/rightStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
-                    "id": "dbc9e333-9419-45cb-90ee-9ac6cc8abbea",
-                    "path": "<Gamepad>/dpad",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Joystick",
-                    "id": "7ca0d554-98c5-4c1d-97c8-10f0a94aeb62",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Navigate",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "e911b40b-53eb-41d8-b6f8-4a24da58d2c4",
-                    "path": "<Joystick>/stick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Joystick",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "218933ad-78d7-453b-a71e-90cd99be2770",
-                    "path": "<Joystick>/stick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Joystick",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "a92dc904-e35a-49e0-9001-ad1db5e6f4cf",
-                    "path": "<Joystick>/stick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Joystick",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "1a7ffe48-ca6b-41ef-95b2-c7d4267ae311",
-                    "path": "<Joystick>/stick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Joystick",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
                 {
                     "name": "Keyboard",
                     "id": "5ced9f19-6e69-4604-8aee-3f35063c00a8",
@@ -479,8 +1412,8 @@
                     "isPartOfComposite": true
                 },
                 {
-                    "name": "Keyboard",
-                    "id": "522fcdb6-2587-4cdb-a30e-df5f8e586176",
+                    "name": "2D Vector",
+                    "id": "d290c95e-d501-439e-903d-e47bd399d2ff",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -488,6 +1421,50 @@
                     "action": "Navigate",
                     "isComposite": true,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "up",
+                    "id": "d263ea6c-c0dd-477f-b195-34f2a24dfd6b",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/stick/up",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "down",
+                    "id": "cf08aa19-df64-42df-8d98-2aa742d8d95b",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/stick/down",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "left",
+                    "id": "f09cf07c-1696-4468-855f-e08b36e7d979",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/stick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "right",
+                    "id": "d894d8ef-4951-4465-9453-1600e594919f",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/stick/right",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Navigate",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 },
                 {
                     "name": "",
@@ -644,204 +1621,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "Keyboard",
-                    "id": "80c6b8d1-8963-464d-b874-95b34fc148c0",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "04f37573-66d7-4c94-8ce1-80f2bdaec556",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "up",
-                    "id": "5b75b34e-d32d-42af-801c-04e15ae56e39",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "046dc40a-844c-4036-8d90-ca4fd86ac0a8",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "dcc4dcd4-252a-4f48-be6a-663024f03173",
-                    "path": "<Keyboard>/downArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "71f07b2d-018b-480b-bdb0-3de214e97790",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "b3aa8c10-ad06-445c-afa9-bd21d00bdd9b",
-                    "path": "<Keyboard>/leftArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "006a5115-224b-41e5-9df5-43d9b83fbb9a",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "73d88b3e-1094-49ca-a779-524d707e1c55",
-                    "path": "<Keyboard>/rightArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "Gamepad",
-                    "id": "d5d969e9-c310-4a8a-b9af-8c754009dd30",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "8914dd0f-9688-4a32-9d93-4367454a8a3f",
-                    "path": "<Gamepad>/leftStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "up",
-                    "id": "7d4c1b41-83ca-468e-9c55-ad2c92eddd6d",
-                    "path": "<Gamepad>/rightStick/up",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "f0b29dfb-06c3-4498-a305-4697787eda78",
-                    "path": "<Gamepad>/leftStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "fee4f5b4-978a-482c-8f37-d7c8030cee3a",
-                    "path": "<Gamepad>/rightStick/down",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "0a2ef7f2-edef-4b38-b623-a6410477a2d0",
-                    "path": "<Gamepad>/leftStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "3242ef47-8865-406b-aace-c52c95874a2a",
-                    "path": "<Gamepad>/rightStick/left",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "c7505ea9-d1a9-4632-b6a3-abf6172db0e5",
-                    "path": "<Gamepad>/leftStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "38f3906a-57b9-4ab9-a903-289e030656c0",
-                    "path": "<Gamepad>/rightStick/right",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Mouse + Keyboard",
-                    "action": "Navigate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "d38aba7d-769d-462a-921b-cdbf1bad5dbd",
                     "path": "<Mouse>/position",
@@ -870,6 +1649,28 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Mouse + Keyboard",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "88851a44-ea60-479c-8b23-55851a444621",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button7",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Click",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "98f177f3-bdb5-4671-be76-5ac4f97bbfbe",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button8",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
                     "action": "Click",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -939,6 +1740,94 @@
                     "action": "Back",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b7e109b2-5ea3-4162-acbc-a82a93543b57",
+                    "path": "<HID::STMicroelectronics ROIN Control Panel>/button11",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Integrated Panel",
+                    "action": "Back",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3b47da9e-bd7d-4045-b077-4224ab8db037",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "LeftClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d15c05c1-3167-43cb-974d-2d7f45a8ed8c",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "LeftClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "7bfee880-6217-4a23-b438-50cfbd2039f5",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d591658d-8231-452f-b248-72e59f1924fc",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Select Next Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ddf232aa-8620-47dc-881e-a9d2d26076f1",
+                    "path": "<Keyboard>/rightArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Select Next Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "26694842-ea3e-4620-971b-e063594bd21c",
+                    "path": "<Keyboard>/upArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Select Previous Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0ad11e20-ad5f-4c14-abb9-cb438d52d817",
+                    "path": "<Keyboard>/leftArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Mouse + Keyboard",
+                    "action": "Select Previous Button",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -955,7 +1844,7 @@
                 },
                 {
                     "devicePath": "<Keyboard>",
-                    "isOptional": true,
+                    "isOptional": false,
                     "isOR": false
                 }
             ]
@@ -965,7 +1854,7 @@
             "bindingGroup": "Integrated Panel",
             "devices": [
                 {
-                    "devicePath": "<RoinControlPanel>",
+                    "devicePath": "<HID::STMicroelectronics ROIN Control Panel>",
                     "isOptional": false,
                     "isOR": false
                 }

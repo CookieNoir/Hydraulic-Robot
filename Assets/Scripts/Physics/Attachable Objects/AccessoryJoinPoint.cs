@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class AccessoryJoinPoint : OverloadDetection
 {
@@ -10,8 +11,10 @@ public class AccessoryJoinPoint : OverloadDetection
     public bool Selected { get; private set; } = false;
     public bool Equippable { get; private set; } = false;
     public bool Equipped { get; private set; } = false;
-    public KeyCode equipKeyCode;
+    public InputActionReference action;
 
+    private InputAction inAction;
+    private float inputValue;
     private HashSet<RigidbodyAccessory> accessories;
     private RigidbodyAccessory accessory;
 
@@ -71,6 +74,24 @@ public class AccessoryJoinPoint : OverloadDetection
         Equipped = false;
         accessory = null;
         accessories = new HashSet<RigidbodyAccessory>();
+
+        if (action is not null)
+        {
+            inAction = action;
+            inAction.performed += _OnActionPerformed;
+            if (!inAction.enabled) inAction.Enable();
+        }
+        else Debug.Log(string.Format("No action specified for game object {0}.", gameObject.name));
+    }
+
+    void OnDisable()
+    {
+        if (inAction.enabled) inAction.Disable();
+    }
+
+    void OnEnable()
+    {
+        if (!inAction.enabled) inAction.Enable();
     }
 
     private void Start()
@@ -78,7 +99,33 @@ public class AccessoryJoinPoint : OverloadDetection
         if (JoinCamera.instance) NotificationSystem.instance?.ChangeScale(JoinCamera.instance.IsEnabled());
     }
 
-    private void Update()
+    private void _OnActionPerformed(InputAction.CallbackContext ctx)
+    {
+        if (Equipped)
+        {
+            UnequipAccessory();
+        }
+        else
+        {
+            if (Selected)
+            {
+                if (Equippable)
+                {
+                    EquipAccessory();
+                }
+                else
+                {
+                    NotificationSystem.instance?.Notify(NotificationSystem.NotificationTypes.warning, "ƒл€ присоединени€ оборудовани€ сократите дистанцию");
+                }
+            }
+            else
+            {
+                NotificationSystem.instance?.Notify(NotificationSystem.NotificationTypes.warning, "ѕоблизости нет навесного оборудовани€");
+            }
+        }
+    }
+
+    private void FixedUpdate()
     {
         if (!Equipped)
             if (!Selected)
@@ -120,18 +167,6 @@ public class AccessoryJoinPoint : OverloadDetection
                     JoinCamera.instance?.SetTextValue(distance.ToString("F8") + " m");
                     Equippable = distance < equipDistance;
                     JoinCamera.instance?.ChangeReadiness(Equippable);
-
-                    if (Input.GetKeyDown(equipKeyCode))
-                    {
-                        if (Equippable)
-                        {
-                            EquipAccessory();
-                        }
-                        else
-                        {
-                            NotificationSystem.instance?.Notify(NotificationSystem.NotificationTypes.warning, "ƒл€ присоединени€ оборудовани€ сократите дистанцию");
-                        }
-                    }
                 }
             }
         else
@@ -140,12 +175,12 @@ public class AccessoryJoinPoint : OverloadDetection
             {
                 JoinCamera.instance.ChangeActivity(false);
             }
-
-            if (Input.GetKeyDown(equipKeyCode))
-            {
-                UnequipAccessory();
-            }
         }
+    }
+
+    private void Update()
+    {
+        inputValue = inAction.ReadValue<float>();
     }
 
     protected override void OnDrawGizmosSelected()
