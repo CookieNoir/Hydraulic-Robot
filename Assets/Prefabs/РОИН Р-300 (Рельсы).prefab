@@ -2816,12 +2816,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   independent: 1
   speed: 30
-  action: {fileID: 776730807928612751, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
-  restrictingModifications:
-  - {fileID: 3933806224536620354}
-  - {fileID: 3933806224347032882}
-  - {fileID: 3933806224671157807}
-  targetDeviation: 1
+  action: {fileID: -9012182985275320399, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
 --- !u!1 &1544139306663338773
 GameObject:
   m_ObjectHideFlags: 0
@@ -4543,7 +4538,7 @@ GameObject:
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1544139307093449371
 Transform:
   m_ObjectHideFlags: 0
@@ -4567,7 +4562,7 @@ Transform:
   - {fileID: 4111933870121436961}
   - {fileID: 4372056615157692029}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: -91.6, z: 0}
 --- !u!171741748 &1544139307093449571
 ArticulationBody:
@@ -4671,6 +4666,7 @@ MonoBehaviour:
   specialCamerasContainer: {fileID: 562589178333011635}
   defaultState: {fileID: 1544139307093449372}
   timeForSettingState: 2
+  robotTasks: {fileID: 0}
 --- !u!114 &1544139307093449372
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5063,12 +5059,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   independent: 1
   speed: 30
-  action: {fileID: 776730807928612751, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
-  restrictingModifications:
-  - {fileID: 3933806224536620354}
-  - {fileID: 3933806225144275523}
-  - {fileID: 3933806224671157807}
-  targetDeviation: 1
+  action: {fileID: -8726694769213233030, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
 --- !u!1 &1544139307221567267
 GameObject:
   m_ObjectHideFlags: 0
@@ -6124,7 +6115,10 @@ MonoBehaviour:
   joinCamera: {fileID: 1544139307808820223}
   cameraTurnOnDistance: 0.2
   equipDistance: 0.1
-  action: {fileID: -4416840252833697470, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
+  equipAction: {fileID: -4416840252833697470, guid: 996af1f48d4efc34fadbf37035bfeca5,
+    type: 3}
+  unequipAction: {fileID: -6250689082094651899, guid: 996af1f48d4efc34fadbf37035bfeca5,
+    type: 3}
 --- !u!65 &1544139307392134759
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7124,7 +7118,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 1
-  m_ParentAnchorPosition: {x: 0.8589785, y: 0.56707764, z: 1.4062499}
+  m_ParentAnchorPosition: {x: 0.859009, y: 0.56708145, z: 1.4062499}
   m_ParentAnchorRotation: {x: -0.12955154, y: -0.65576553, z: -0.7347232, w: 0.115629174}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0.70710677, y: 0, z: 0, w: -0.70710677}
@@ -7206,12 +7200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   independent: 1
   speed: 30
-  action: {fileID: 776730807928612751, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
-  restrictingModifications:
-  - {fileID: 3933806224347032882}
-  - {fileID: 3933806225144275523}
-  - {fileID: 3933806224671157807}
-  targetDeviation: 1
+  action: {fileID: -3379649842203038077, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
 --- !u!1 &1544139307879908533
 GameObject:
   m_ObjectHideFlags: 0
@@ -7810,7 +7799,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 1
-  m_ParentAnchorPosition: {x: -0.85763574, y: 0.561615, z: -1.1172485}
+  m_ParentAnchorPosition: {x: -0.85763574, y: 0.561615, z: -1.1171875}
   m_ParentAnchorRotation: {x: -0.73483604, y: 0.115056835, z: 0.12891036, w: 0.6558661}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0.70710677, y: 0, z: 0, w: -0.70710677}
@@ -7892,12 +7881,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   independent: 1
   speed: 30
-  action: {fileID: 776730807928612751, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
-  restrictingModifications:
-  - {fileID: 3933806224536620354}
-  - {fileID: 3933806224347032882}
-  - {fileID: 3933806225144275523}
-  targetDeviation: 1
+  action: {fileID: -8295184921416518952, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
 --- !u!1 &1544139308031039511
 GameObject:
   m_ObjectHideFlags: 0

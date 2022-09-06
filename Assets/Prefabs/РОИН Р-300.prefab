@@ -64,6 +64,37 @@ Transform:
   m_Father: {fileID: 2592469677318260381}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1438568851
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1438568852}
+  m_Layer: 0
+  m_Name: Back Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1438568852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438568851}
+  m_LocalRotation: {x: 0, y: 0.9935719, z: -0.11320323, w: 0}
+  m_LocalPosition: {x: -0.07, y: 3, z: 6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7131161341553861472}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 13, y: 180, z: 0}
 --- !u!1 &2592469676899256846
 GameObject:
   m_ObjectHideFlags: 0
@@ -1190,7 +1221,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2592469677181718304}
   m_Layer: 0
-  m_Name: Main Camera_1
+  m_Name: Main Camera
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3783,7 +3814,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2592469677731460467}
   m_Layer: 0
-  m_Name: CameraLeft_1
+  m_Name: Left Camera
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4081,7 +4112,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 1
-  m_ParentAnchorPosition: {x: -0.00262714, y: 1.1371853, z: -0.21493593}
+  m_ParentAnchorPosition: {x: -0.0026375204, y: 1.137182, z: -0.21490744}
   m_ParentAnchorRotation: {x: -0.43421754, y: 0.43645886, z: 0.5577923, w: 0.55662084}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0, y: 0, z: 0.70710677, w: 0.70710677}
@@ -4360,12 +4391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   independent: 1
   speed: 30
-  action: {fileID: 776730807928612751, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
-  restrictingModifications:
-  - {fileID: 1456846211}
-  - {fileID: 721458675}
-  - {fileID: 1590875886}
-  targetDeviation: 1
+  action: {fileID: -9012182985275320399, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
 --- !u!1 &2592469677780147156
 GameObject:
   m_ObjectHideFlags: 0
@@ -5132,7 +5158,10 @@ MonoBehaviour:
   joinCamera: {fileID: 2592469678933013310}
   cameraTurnOnDistance: 0.2
   equipDistance: 0.1
-  action: {fileID: -4416840252833697470, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
+  equipAction: {fileID: -4416840252833697470, guid: 996af1f48d4efc34fadbf37035bfeca5,
+    type: 3}
+  unequipAction: {fileID: -6250689082094651899, guid: 996af1f48d4efc34fadbf37035bfeca5,
+    type: 3}
 --- !u!65 &2592469677976262310
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5543,7 +5572,7 @@ GameObject:
   m_Icon: {fileID: 5721338939258241955, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2592469678155211354
 Transform:
   m_ObjectHideFlags: 0
@@ -5565,7 +5594,7 @@ Transform:
   - {fileID: 2592469677727254270}
   - {fileID: 2592469678228243588}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!171741748 &2592469678155211682
 ArticulationBody:
@@ -5669,6 +5698,7 @@ MonoBehaviour:
   specialCamerasContainer: {fileID: 3555899818782549618}
   defaultState: {fileID: 2592469678155211357}
   timeForSettingState: 2
+  robotTasks: {fileID: 0}
 --- !u!114 &2592469678155211357
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5954,7 +5984,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2592469678199541396}
   m_Layer: 0
-  m_Name: RightCamera_1
+  m_Name: Right Camera
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6503,12 +6533,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   independent: 1
   speed: 30
-  action: {fileID: 776730807928612751, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
-  restrictingModifications:
-  - {fileID: 1456846211}
-  - {fileID: 2057149058}
-  - {fileID: 1590875886}
-  targetDeviation: 1
+  action: {fileID: -8726694769213233030, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
 --- !u!1 &2592469678346784081
 GameObject:
   m_ObjectHideFlags: 0
@@ -7221,7 +7246,7 @@ ArticulationBody:
   m_Enabled: 1
   serializedVersion: 3
   m_Mass: 1
-  m_ParentAnchorPosition: {x: 0.8590088, y: 0.56708145, z: 1.4062195}
+  m_ParentAnchorPosition: {x: 0.8590088, y: 0.56707764, z: 1.4062195}
   m_ParentAnchorRotation: {x: -0.12955154, y: -0.6557654, z: -0.7347231, w: 0.11562918}
   m_AnchorPosition: {x: 0, y: 0, z: 0}
   m_AnchorRotation: {x: 0.70710677, y: 0, z: 0, w: -0.70710677}
@@ -7303,12 +7328,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   independent: 1
   speed: 30
-  action: {fileID: 776730807928612751, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
-  restrictingModifications:
-  - {fileID: 721458675}
-  - {fileID: 2057149058}
-  - {fileID: 1590875886}
-  targetDeviation: 1
+  action: {fileID: -3379649842203038077, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
 --- !u!1 &2592469678459337844
 GameObject:
   m_ObjectHideFlags: 0
@@ -7692,12 +7712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   independent: 1
   speed: 30
-  action: {fileID: 776730807928612751, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
-  restrictingModifications:
-  - {fileID: 1456846211}
-  - {fileID: 721458675}
-  - {fileID: 2057149058}
-  targetDeviation: 1
+  action: {fileID: -8295184921416518952, guid: 996af1f48d4efc34fadbf37035bfeca5, type: 3}
 --- !u!1 &2592469678542823638
 GameObject:
   m_ObjectHideFlags: 0
@@ -8087,7 +8102,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2592469678833818445}
   m_Layer: 0
-  m_Name: CameraFromFirstFace
+  m_Name: First Person Camera
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8554,6 +8569,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2592469677181718304}
+  - {fileID: 1438568852}
   - {fileID: 2592469678833818445}
   - {fileID: 2592469678199541396}
   - {fileID: 2592469677731460467}

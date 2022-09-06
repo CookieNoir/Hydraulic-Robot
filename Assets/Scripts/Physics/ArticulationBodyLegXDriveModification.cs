@@ -2,6 +2,7 @@ using UnityEngine;
 [RequireComponent(typeof(ArticulationBody))]
 public class ArticulationBodyLegXDriveModification : ArticulationBodyXDriveModification
 {
+    /*
     public ArticulationBodyXDriveModification[] restrictingModifications;
     [Min(0f)] public float targetDeviation = 1f;
 
@@ -23,4 +24,5 @@ public class ArticulationBodyLegXDriveModification : ArticulationBodyXDriveModif
             base.OnIncreaseAction();
         }
     }
+    */
 }

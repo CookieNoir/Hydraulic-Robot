@@ -17,16 +17,7 @@ public class InputInitializer : MonoBehaviour {
             inputController = new InputController();
             uiActionMap = inputController.UI;
             robotBaseActionMap = inputController.RobotBase;
-            robotArmActionMap = inputController.RobotArm;
-
-            //robotArmActionMap.MoveOutrigger.AddCompositeBinding("Axis")
-            //        .With("Positive", "<Keyboard>/E")
-            //        .With("Negative", "<Keyboard>/Q")
-            //        .With("MaxValue", "1")
-            //        .With("MinVlaue", "-1");
-
-            robotArmActionMap.MoveOutrigger.Enable();            
+            robotArmActionMap = inputController.RobotArm;      
         }
     }
-
 }

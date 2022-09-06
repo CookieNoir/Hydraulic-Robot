@@ -118,18 +118,18 @@ public partial class @InputController : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Move Outrigger"",
-                    ""type"": ""Value"",
-                    ""id"": ""1c73c3d5-549d-4a9c-85ec-1bcc06f46566"",
-                    ""expectedControlType"": ""Axis"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
                     ""name"": ""AttachEquipment"",
                     ""type"": ""Button"",
                     ""id"": ""f06fe0dd-2b6b-4267-9f65-caab00e57e28"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""DropEquipment"",
+                    ""type"": ""Button"",
+                    ""id"": ""df3670c8-2c41-400c-9fbb-47240a8a5f5b"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -149,6 +149,42 @@ public partial class @InputController : IInputActionCollection2, IDisposable
                     ""type"": ""Button"",
                     ""id"": ""fd85789e-5831-4bb1-b0ff-89289e85da4c"",
                     ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Move Outrigger Forward Left"",
+                    ""type"": ""Value"",
+                    ""id"": ""049a68f4-63fb-43b4-a6f1-8c04589fed5f"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Move Outrigger Forward Right"",
+                    ""type"": ""Value"",
+                    ""id"": ""4fe4877b-fe0c-4cfb-a17d-26927512ce52"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Move Outrigger Back Left"",
+                    ""type"": ""Value"",
+                    ""id"": ""a086e1e4-24fb-44e3-9ed0-30f0da0eb411"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Move Outrigger Back Right"",
+                    ""type"": ""Value"",
+                    ""id"": ""ad3d22b7-4cc4-420d-8da2-5b37159f3081"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -361,72 +397,6 @@ public partial class @InputController : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": ""Mouse + Keyboard"",
                     ""action"": ""Move Link 2"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""One Modifier"",
-                    ""id"": ""3d111ccd-efd5-447a-9f54-81b3756c47cb"",
-                    ""path"": ""OneModifier"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move Outrigger"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""modifier"",
-                    ""id"": ""aa5dd90f-b977-4ac3-a2d3-43b3f5b8e085"",
-                    ""path"": ""<HID::STMicroelectronics ROIN Control Panel>/button10"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Integrated Panel"",
-                    ""action"": ""Move Outrigger"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""binding"",
-                    ""id"": ""af984e34-6826-4c5d-9e97-302e0ba38110"",
-                    ""path"": ""<HID::STMicroelectronics ROIN Control Panel>/stick/y"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Integrated Panel"",
-                    ""action"": ""Move Outrigger"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""9b18184e-c8e1-4580-875b-c3b238939e96"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move Outrigger"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""0b3bd57d-de71-4629-82c9-6914ee1184e6"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse + Keyboard"",
-                    ""action"": ""Move Outrigger"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""5de7b548-b6e6-475a-b84d-6ae6f360d56d"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse + Keyboard"",
-                    ""action"": ""Move Outrigger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -916,17 +886,6 @@ public partial class @InputController : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""a77cbf2b-7c55-4e47-ab7a-7c1cb690ab5b"",
-                    ""path"": ""<Keyboard>/period"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Mouse + Keyboard"",
-                    ""action"": ""AttachmentAction1"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""79056bb6-7812-4c65-8d90-276b88a2121a"",
                     ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
@@ -938,8 +897,8 @@ public partial class @InputController : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""72c13a14-6c45-4ef1-bc7f-a05f30632a24"",
-                    ""path"": ""<Keyboard>/comma"",
+                    ""id"": ""9090793c-7065-44cd-bc7f-ba18050d5930"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse + Keyboard"",
@@ -948,13 +907,145 @@ public partial class @InputController : IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""9090793c-7065-44cd-bc7f-ba18050d5930"",
-                    ""path"": ""<Mouse>/rightButton"",
+                    ""name"": ""12"",
+                    ""id"": ""cc641787-3d7b-45b7-96f4-08bc01548462"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move Outrigger Forward Left"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""d9be1d9f-3fb9-44a9-9ab3-b4ec9bbf634d"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Mouse + Keyboard"",
-                    ""action"": ""AttachmentAction2"",
+                    ""action"": ""Move Outrigger Forward Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""a0e039e8-40ce-4933-b032-825cbc10f5ea"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse + Keyboard"",
+                    ""action"": ""Move Outrigger Forward Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""34"",
+                    ""id"": ""8f26d45e-db5b-4b2b-a649-e8df7672dc23"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move Outrigger Forward Right"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""c09c9519-1603-4eb4-8cae-a85484265bea"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse + Keyboard"",
+                    ""action"": ""Move Outrigger Forward Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""82f8a649-2b39-4f4a-b42c-7a46e11df455"",
+                    ""path"": ""<Keyboard>/4"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse + Keyboard"",
+                    ""action"": ""Move Outrigger Forward Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""56"",
+                    ""id"": ""65f98374-7d95-4aac-b70f-8ad0ca28d9e3"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move Outrigger Back Left"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""c416af7e-bd99-4a37-af93-2be4958aa816"",
+                    ""path"": ""<Keyboard>/5"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse + Keyboard"",
+                    ""action"": ""Move Outrigger Back Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""e7190a94-e4f4-4253-a4dd-06d3cd996978"",
+                    ""path"": ""<Keyboard>/6"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse + Keyboard"",
+                    ""action"": ""Move Outrigger Back Left"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""78"",
+                    ""id"": ""ff0926c4-b3ba-4891-b92a-24af3a608197"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move Outrigger Back Right"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""804790c6-a4d8-47a2-a71c-25899bf60f8f"",
+                    ""path"": ""<Keyboard>/7"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse + Keyboard"",
+                    ""action"": ""Move Outrigger Back Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""9edc9e65-e635-4e14-8e38-da1d65dccbdd"",
+                    ""path"": ""<Keyboard>/8"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse + Keyboard"",
+                    ""action"": ""Move Outrigger Back Right"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""eb972194-a2cf-4321-9646-aaf78659b7c8"",
+                    ""path"": ""<Keyboard>/period"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Mouse + Keyboard"",
+                    ""action"": ""DropEquipment"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1896,10 +1987,14 @@ public partial class @InputController : IInputActionCollection2, IDisposable
         m_RobotArm_MoveLink7 = m_RobotArm.FindAction("Move Link 7", throwIfNotFound: true);
         m_RobotArm_MoveLink8 = m_RobotArm.FindAction("Move Link 8", throwIfNotFound: true);
         m_RobotArm_MoveLink9 = m_RobotArm.FindAction("Move Link 9", throwIfNotFound: true);
-        m_RobotArm_MoveOutrigger = m_RobotArm.FindAction("Move Outrigger", throwIfNotFound: true);
         m_RobotArm_AttachEquipment = m_RobotArm.FindAction("AttachEquipment", throwIfNotFound: true);
+        m_RobotArm_DropEquipment = m_RobotArm.FindAction("DropEquipment", throwIfNotFound: true);
         m_RobotArm_AttachmentAction1 = m_RobotArm.FindAction("AttachmentAction1", throwIfNotFound: true);
         m_RobotArm_AttachmentAction2 = m_RobotArm.FindAction("AttachmentAction2", throwIfNotFound: true);
+        m_RobotArm_MoveOutriggerForwardLeft = m_RobotArm.FindAction("Move Outrigger Forward Left", throwIfNotFound: true);
+        m_RobotArm_MoveOutriggerForwardRight = m_RobotArm.FindAction("Move Outrigger Forward Right", throwIfNotFound: true);
+        m_RobotArm_MoveOutriggerBackLeft = m_RobotArm.FindAction("Move Outrigger Back Left", throwIfNotFound: true);
+        m_RobotArm_MoveOutriggerBackRight = m_RobotArm.FindAction("Move Outrigger Back Right", throwIfNotFound: true);
         // RobotBase
         m_RobotBase = asset.FindActionMap("RobotBase", throwIfNotFound: true);
         m_RobotBase_ChangeCamera = m_RobotBase.FindAction("ChangeCamera", throwIfNotFound: true);
@@ -1991,10 +2086,14 @@ public partial class @InputController : IInputActionCollection2, IDisposable
     private readonly InputAction m_RobotArm_MoveLink7;
     private readonly InputAction m_RobotArm_MoveLink8;
     private readonly InputAction m_RobotArm_MoveLink9;
-    private readonly InputAction m_RobotArm_MoveOutrigger;
     private readonly InputAction m_RobotArm_AttachEquipment;
+    private readonly InputAction m_RobotArm_DropEquipment;
     private readonly InputAction m_RobotArm_AttachmentAction1;
     private readonly InputAction m_RobotArm_AttachmentAction2;
+    private readonly InputAction m_RobotArm_MoveOutriggerForwardLeft;
+    private readonly InputAction m_RobotArm_MoveOutriggerForwardRight;
+    private readonly InputAction m_RobotArm_MoveOutriggerBackLeft;
+    private readonly InputAction m_RobotArm_MoveOutriggerBackRight;
     public struct RobotArmActions
     {
         private @InputController m_Wrapper;
@@ -2009,10 +2108,14 @@ public partial class @InputController : IInputActionCollection2, IDisposable
         public InputAction @MoveLink7 => m_Wrapper.m_RobotArm_MoveLink7;
         public InputAction @MoveLink8 => m_Wrapper.m_RobotArm_MoveLink8;
         public InputAction @MoveLink9 => m_Wrapper.m_RobotArm_MoveLink9;
-        public InputAction @MoveOutrigger => m_Wrapper.m_RobotArm_MoveOutrigger;
         public InputAction @AttachEquipment => m_Wrapper.m_RobotArm_AttachEquipment;
+        public InputAction @DropEquipment => m_Wrapper.m_RobotArm_DropEquipment;
         public InputAction @AttachmentAction1 => m_Wrapper.m_RobotArm_AttachmentAction1;
         public InputAction @AttachmentAction2 => m_Wrapper.m_RobotArm_AttachmentAction2;
+        public InputAction @MoveOutriggerForwardLeft => m_Wrapper.m_RobotArm_MoveOutriggerForwardLeft;
+        public InputAction @MoveOutriggerForwardRight => m_Wrapper.m_RobotArm_MoveOutriggerForwardRight;
+        public InputAction @MoveOutriggerBackLeft => m_Wrapper.m_RobotArm_MoveOutriggerBackLeft;
+        public InputAction @MoveOutriggerBackRight => m_Wrapper.m_RobotArm_MoveOutriggerBackRight;
         public InputActionMap Get() { return m_Wrapper.m_RobotArm; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -2052,18 +2155,30 @@ public partial class @InputController : IInputActionCollection2, IDisposable
                 @MoveLink9.started -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveLink9;
                 @MoveLink9.performed -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveLink9;
                 @MoveLink9.canceled -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveLink9;
-                @MoveOutrigger.started -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveOutrigger;
-                @MoveOutrigger.performed -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveOutrigger;
-                @MoveOutrigger.canceled -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveOutrigger;
                 @AttachEquipment.started -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnAttachEquipment;
                 @AttachEquipment.performed -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnAttachEquipment;
                 @AttachEquipment.canceled -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnAttachEquipment;
+                @DropEquipment.started -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnDropEquipment;
+                @DropEquipment.performed -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnDropEquipment;
+                @DropEquipment.canceled -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnDropEquipment;
                 @AttachmentAction1.started -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnAttachmentAction1;
                 @AttachmentAction1.performed -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnAttachmentAction1;
                 @AttachmentAction1.canceled -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnAttachmentAction1;
                 @AttachmentAction2.started -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnAttachmentAction2;
                 @AttachmentAction2.performed -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnAttachmentAction2;
                 @AttachmentAction2.canceled -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnAttachmentAction2;
+                @MoveOutriggerForwardLeft.started -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveOutriggerForwardLeft;
+                @MoveOutriggerForwardLeft.performed -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveOutriggerForwardLeft;
+                @MoveOutriggerForwardLeft.canceled -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveOutriggerForwardLeft;
+                @MoveOutriggerForwardRight.started -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveOutriggerForwardRight;
+                @MoveOutriggerForwardRight.performed -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveOutriggerForwardRight;
+                @MoveOutriggerForwardRight.canceled -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveOutriggerForwardRight;
+                @MoveOutriggerBackLeft.started -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveOutriggerBackLeft;
+                @MoveOutriggerBackLeft.performed -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveOutriggerBackLeft;
+                @MoveOutriggerBackLeft.canceled -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveOutriggerBackLeft;
+                @MoveOutriggerBackRight.started -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveOutriggerBackRight;
+                @MoveOutriggerBackRight.performed -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveOutriggerBackRight;
+                @MoveOutriggerBackRight.canceled -= m_Wrapper.m_RobotArmActionsCallbackInterface.OnMoveOutriggerBackRight;
             }
             m_Wrapper.m_RobotArmActionsCallbackInterface = instance;
             if (instance != null)
@@ -2098,18 +2213,30 @@ public partial class @InputController : IInputActionCollection2, IDisposable
                 @MoveLink9.started += instance.OnMoveLink9;
                 @MoveLink9.performed += instance.OnMoveLink9;
                 @MoveLink9.canceled += instance.OnMoveLink9;
-                @MoveOutrigger.started += instance.OnMoveOutrigger;
-                @MoveOutrigger.performed += instance.OnMoveOutrigger;
-                @MoveOutrigger.canceled += instance.OnMoveOutrigger;
                 @AttachEquipment.started += instance.OnAttachEquipment;
                 @AttachEquipment.performed += instance.OnAttachEquipment;
                 @AttachEquipment.canceled += instance.OnAttachEquipment;
+                @DropEquipment.started += instance.OnDropEquipment;
+                @DropEquipment.performed += instance.OnDropEquipment;
+                @DropEquipment.canceled += instance.OnDropEquipment;
                 @AttachmentAction1.started += instance.OnAttachmentAction1;
                 @AttachmentAction1.performed += instance.OnAttachmentAction1;
                 @AttachmentAction1.canceled += instance.OnAttachmentAction1;
                 @AttachmentAction2.started += instance.OnAttachmentAction2;
                 @AttachmentAction2.performed += instance.OnAttachmentAction2;
                 @AttachmentAction2.canceled += instance.OnAttachmentAction2;
+                @MoveOutriggerForwardLeft.started += instance.OnMoveOutriggerForwardLeft;
+                @MoveOutriggerForwardLeft.performed += instance.OnMoveOutriggerForwardLeft;
+                @MoveOutriggerForwardLeft.canceled += instance.OnMoveOutriggerForwardLeft;
+                @MoveOutriggerForwardRight.started += instance.OnMoveOutriggerForwardRight;
+                @MoveOutriggerForwardRight.performed += instance.OnMoveOutriggerForwardRight;
+                @MoveOutriggerForwardRight.canceled += instance.OnMoveOutriggerForwardRight;
+                @MoveOutriggerBackLeft.started += instance.OnMoveOutriggerBackLeft;
+                @MoveOutriggerBackLeft.performed += instance.OnMoveOutriggerBackLeft;
+                @MoveOutriggerBackLeft.canceled += instance.OnMoveOutriggerBackLeft;
+                @MoveOutriggerBackRight.started += instance.OnMoveOutriggerBackRight;
+                @MoveOutriggerBackRight.performed += instance.OnMoveOutriggerBackRight;
+                @MoveOutriggerBackRight.canceled += instance.OnMoveOutriggerBackRight;
             }
         }
     }
@@ -2338,10 +2465,14 @@ public partial class @InputController : IInputActionCollection2, IDisposable
         void OnMoveLink7(InputAction.CallbackContext context);
         void OnMoveLink8(InputAction.CallbackContext context);
         void OnMoveLink9(InputAction.CallbackContext context);
-        void OnMoveOutrigger(InputAction.CallbackContext context);
         void OnAttachEquipment(InputAction.CallbackContext context);
+        void OnDropEquipment(InputAction.CallbackContext context);
         void OnAttachmentAction1(InputAction.CallbackContext context);
         void OnAttachmentAction2(InputAction.CallbackContext context);
+        void OnMoveOutriggerForwardLeft(InputAction.CallbackContext context);
+        void OnMoveOutriggerForwardRight(InputAction.CallbackContext context);
+        void OnMoveOutriggerBackLeft(InputAction.CallbackContext context);
+        void OnMoveOutriggerBackRight(InputAction.CallbackContext context);
     }
     public interface IRobotBaseActions
     {

@@ -32,25 +32,15 @@ public class ArticulationBodyXDriveModification : MonoBehaviour
         if (action is not null) 
         {
             inAction = action;
-
             // Пример программного добавления привязки.
             //inAction.AddCompositeBinding("Axis")
             //    .With("Positive", "<Keyboard>/" + increaseValueButton.ToString())
             //    .With("Negative", "<Keyboard>/" + decreaseValueButton.ToString())
             //    .With("MaxValue", "1")
             //    .With("MinVlaue", "-1");
-
             if (!inAction.enabled) inAction.Enable();
         }
         else Debug.Log(string.Format("No action specified for game object {0}.", gameObject.name));
-    }
-
-    void OnDisable() {
-        if (inAction.enabled) inAction.Disable();
-    }
-
-    void OnEnable() {
-        if (!inAction.enabled) inAction.Enable();
     }
 
     private void Update() {

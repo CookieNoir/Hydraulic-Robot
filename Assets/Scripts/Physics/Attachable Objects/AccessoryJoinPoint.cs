@@ -11,10 +11,10 @@ public class AccessoryJoinPoint : OverloadDetection
     public bool Selected { get; private set; } = false;
     public bool Equippable { get; private set; } = false;
     public bool Equipped { get; private set; } = false;
-    public InputActionReference action;
-
-    private InputAction inAction;
-    private float inputValue;
+    public InputActionReference equipAction;
+    public InputActionReference unequipAction;
+    private InputAction inEquipAction;
+    private InputAction inUnequipAction;
     private HashSet<RigidbodyAccessory> accessories;
     private RigidbodyAccessory accessory;
 
@@ -75,23 +75,20 @@ public class AccessoryJoinPoint : OverloadDetection
         accessory = null;
         accessories = new HashSet<RigidbodyAccessory>();
 
-        if (action is not null)
+        if (equipAction is not null)
         {
-            inAction = action;
-            inAction.performed += _OnActionPerformed;
-            if (!inAction.enabled) inAction.Enable();
+            inEquipAction = equipAction;
+            inEquipAction.performed += _TryToEquip;
+            if (!inEquipAction.enabled) inEquipAction.Enable();
         }
         else Debug.Log(string.Format("No action specified for game object {0}.", gameObject.name));
-    }
-
-    void OnDisable()
-    {
-        if (inAction.enabled) inAction.Disable();
-    }
-
-    void OnEnable()
-    {
-        if (!inAction.enabled) inAction.Enable();
+        if (unequipAction is not null)
+        {
+            inUnequipAction = unequipAction;
+            inUnequipAction.performed += _TryToUnequip;
+            if (!inUnequipAction.enabled) inUnequipAction.Enable();
+        }
+        else Debug.Log(string.Format("No action specified for game object {0}.", gameObject.name));
     }
 
     private void Start()
@@ -99,13 +96,9 @@ public class AccessoryJoinPoint : OverloadDetection
         if (JoinCamera.instance) NotificationSystem.instance?.ChangeScale(JoinCamera.instance.IsEnabled());
     }
 
-    private void _OnActionPerformed(InputAction.CallbackContext ctx)
+    private void _TryToEquip(InputAction.CallbackContext ctx)
     {
-        if (Equipped)
-        {
-            UnequipAccessory();
-        }
-        else
+        if (!Equipped)
         {
             if (Selected)
             {
@@ -122,6 +115,14 @@ public class AccessoryJoinPoint : OverloadDetection
             {
                 NotificationSystem.instance?.Notify(NotificationSystem.NotificationTypes.warning, "ѕоблизости нет навесного оборудовани€");
             }
+        }
+    }
+
+    private void _TryToUnequip(InputAction.CallbackContext ctx)
+    {
+        if (Equipped)
+        {
+            UnequipAccessory();
         }
     }
 
@@ -176,11 +177,6 @@ public class AccessoryJoinPoint : OverloadDetection
                 JoinCamera.instance.ChangeActivity(false);
             }
         }
-    }
-
-    private void Update()
-    {
-        inputValue = inAction.ReadValue<float>();
     }
 
     protected override void OnDrawGizmosSelected()

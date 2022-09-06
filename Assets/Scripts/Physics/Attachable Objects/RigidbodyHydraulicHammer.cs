@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RigidbodyHydraulicHammer : RigidbodyAccessory
 {
@@ -6,7 +7,22 @@ public class RigidbodyHydraulicHammer : RigidbodyAccessory
     [Space(10)]
     public string turnedOffIconName;
     public string turnedOnIconName;
+    public InputActionReference action1;
+    private InputAction inAction1;
     private bool canDestroy;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        if (action1 is not null)
+        {
+            inAction1 = action1;
+            inAction1.performed += FirstAction;
+            if (!inAction1.enabled) inAction1.Enable();
+        }
+        else Debug.Log(string.Format("No action specified for game object {0}.", gameObject.name));
+    }
 
     protected override void Start()
     {
@@ -14,13 +30,10 @@ public class RigidbodyHydraulicHammer : RigidbodyAccessory
         base.Start();
     }
 
-    private void ChangeStateAndIcon(bool state)
+    private void ChangeStateAndIcon()
     {
-        if (canDestroy != state)
-        {
-            SetState(state);
-            SetIcon();
-        }
+        SetState(!canDestroy);
+        SetIcon();
     }
 
     private void SetState(bool value)
@@ -45,13 +58,11 @@ public class RigidbodyHydraulicHammer : RigidbodyAccessory
         AccessoryIcon.instance?.TurnOffIcon();
     }
 
-    protected override void FirstAction()
+    protected override void FirstAction(InputAction.CallbackContext ctx)
     {
-        ChangeStateAndIcon(true);
-    }
-
-    protected override void SecondAction()
-    {
-        ChangeStateAndIcon(false);
+        if (Equipped)
+        {
+            ChangeStateAndIcon();
+        }
     }
 }

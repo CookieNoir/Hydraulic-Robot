@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class RigidbodyGrab : RigidbodyAccessory
 {
@@ -17,6 +18,12 @@ public class RigidbodyGrab : RigidbodyAccessory
     public RigidbodyAttachableObject AttachedObject { get; private set; }
     public const float minRotationAngle = -9f;
     public const float maxRotationAngle = 52f;
+    public InputActionReference action1;
+    public InputActionReference action2;
+    private InputAction inAction1;
+    private InputAction inAction2;
+    private float _inputValue1;
+    private float _inputValue2;
     private float rotationAngleOnAttach;
     private bool objectAttached = false;
 
@@ -28,12 +35,35 @@ public class RigidbodyGrab : RigidbodyAccessory
         fixedSpeed = clawRotationSpeed * Time.fixedDeltaTime;
         leftAttachableObjectSet = new HashSet<RigidbodyAttachableObject>();
         rightAttachableObjectSet = new HashSet<RigidbodyAttachableObject>();
+
+        if (action1 is not null)
+        {
+            inAction1 = action1;
+            if (!inAction1.enabled) inAction1.Enable();
+        }
+        else Debug.Log(string.Format("No action specified for game object {0}.", gameObject.name));
+        if (action2 is not null)
+        {
+            inAction2 = action2;
+            if (!inAction2.enabled) inAction2.Enable();
+        }
+        else Debug.Log(string.Format("No action specified for game object {0}.", gameObject.name));
     }
 
-    protected override void FixedUpdate()
+    private void Update()
     {
-        base.FixedUpdate();
-        if (Equipped && !objectAttached) TryToAttachObject();
+        _inputValue1 = inAction1.ReadValue<float>();
+        _inputValue2 = inAction2.ReadValue<float>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (Equipped)
+        {
+            if (!objectAttached) TryToAttachObject();
+            if (_inputValue1 != 0f) FirstAction(new InputAction.CallbackContext());
+            if (_inputValue2 != 0f) SecondAction(new InputAction.CallbackContext());
+        }
     }
 
     private void TryToAttachObject()
@@ -86,7 +116,7 @@ public class RigidbodyGrab : RigidbodyAccessory
         AccessoryIcon.instance?.TurnOffIcon();
     }
 
-    protected override void FirstAction()
+    protected override void FirstAction(InputAction.CallbackContext ctx)
     {
         if (!objectAttached)
         {
@@ -95,7 +125,7 @@ public class RigidbodyGrab : RigidbodyAccessory
         }
     }
 
-    protected override void SecondAction()
+    protected override void SecondAction(InputAction.CallbackContext ctx)
     {
         CurrentRotationAngle -= fixedSpeed;
         RotateClaws();
